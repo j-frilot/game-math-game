@@ -1,45 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-color: #000;
 }
 
-.title-content {
-  height: 90vh;
-  width: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #666;
+h1{
+    font-size: 4rem;
+    margin: 0;
 }
 
-.scene {
-  display: none;
-  height: 90vh;
-  width: 800px;
-  background: #666;
-  grid-template-columns: 550px 250px;
-  grid-template-rows: 65% 35%;
+h2 {
+    font-size: 3rem;
 }
 
-.play-ground {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+.container{
+    height: 100vh;
 }
 
-.text-box {
-  background-color: red;
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-}
 
-.tool-box {
-  background-color: blue;
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-}
