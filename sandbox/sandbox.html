@@ -14,12 +14,11 @@
 
 
     <body>
-        <div class="container indigo ">
+        <div class="container ">
             <div class="title-content center-align ">
                 <h1>Learn Math Game</h1>
-                <h2>Try to make it out of school.</h2>
-                <h2>You might learn something</h2>
-                <button class="btn-large play-btn " data-goto="0"><p>Begin</p></button>
+                <h2>Try to make it out of school. You might learn something</h2>
+                <button class="btn play-btn " data-goto="0"><p>Begin</p></button>
             </div>
 
             <div class="scenes scene-one center-align ">
@@ -31,15 +30,16 @@
                     <h4 class="addition-problem"></h4>
                 </div>
                 <div class="answers">
-                    <button class="btn-large answer" id="answer1">0</button>
-                    <button class="btn-large answer" id="answer2">0</button>
-                    <button class="btn-large answer" id="answer3">0</button>
-                    <button class="btn-large answer" id="answer4">0</button>
+                    <button class="btn answer" id="answer1">0</button>
+                    <button class="btn answer" id="answer2">0</button>
+                    <button class="btn answer" id="answer3">0</button>
+                    <button class="btn answer" id="answer4">0</button>
                 </div>
                 <div class="points"><h3>Points: <span id="points"></span></h3></div>
 
                 <div class="answer-choices">
-                    <button class="modal-one modal-trigger" data-target="modal1">Need Help?</button>
+                    <button class="btn modal-one modal-trigger" data-target="modal1">Need Help?</button>
+                    <button class="btn play-btn" data-goto="1">Skip</button>
             </div>
 
             <!-- 1st grade modal -->
@@ -51,10 +51,9 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
                 </div>
                 <div class="choices">
-                    <!-- <button class="play-btn " data-goto="2">To 2nd</button> -->
-                    <button class="play-btn " data-goto="1">To 2nd</button>
-                </div>
-                </div>   
+                    <button class="btn answer modal-close">Try again</button>
+                    <button class="btn play-btn " data-goto="1">Skip</button>
+                </div> 
             </div>
 
             <!-- SECOND GRADE!! -->
@@ -64,31 +63,37 @@
                     <h1>Welcome to the 2nd Grade!</h1>
                 </div>
                 <div class="content">
-                    <h2>What is the answer to this question?</h2>
+                    <h3>Subtract the following expressions. You must earn 15 points within 20 seconds to advance to the 2nd grade.</h3>
+                    <h4 class="subtraction-problem"></h4>
                 </div>
-                <div class="choices">
-                    <button class="play-btn modal-trigger" data-target="modal2" >To 2nd tutoring</button>
-                    <button class="play-btn modal-trigger" data-target="modal2" >To 2nd tutoring</button>
-                    <button class="play-btn modal-trigger" data-target="modal2" >To 2nd tutoring</button>
-                    <button class="play-btn " data-goto="2">To 3rd</button>
+                <div class="answers">
+                    <button class="btn answer" id="answer1">0</button>
+                    <button class="btn answer" id="answer2">0</button>
+                    <button class="btn answer" id="answer3">0</button>
+                    <button class="btn answer" id="answer4">0</button>
                 </div>
+                <div class="points"><h3>Points: <span id="points"></span></h3></div>
+
+                <div class="answer-choices">
+                    <button class="btn modal-one modal-trigger" data-target="modal2">Need Help?</button>
+                    <button class="btn play-btn" data-goto="2">Skip</button
             </div>
 
             <!-- 2nd grade modal -->
             <div class="scene-four center-align modal" id="modal2">
                 <div class="header">
-                    <h1>2nd Grade Tutoring</h1>
+                    <h1>You need some tutoring I see.</h1>
                 </div>
                 <div class="content">
-                    <h2>Lets brush up on some skills.</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
                 </div>
                 <div class="choices">
-                    <!-- <button class="play-btn " data-goto="4">To 3rd</button> -->
-                    <button class="modal-close">Return</button>
-                </div>
+                    <button class="btn answer modal-close">Try again</button>
+                    <button class="btn play-btn " data-goto="2">Skip</button>
+                </div> 
             </div>
 
-           <!----> <div class="scenes scene-five center-align">
+           <!-- <div class="scenes scene-five center-align">
                 <div class="header">
                     <h1>Welcome to the 3rd Grade!</h1>
                 </div>
@@ -103,7 +108,7 @@
                 </div>
             </div>
 
-            <!-- 3rd grade modal -->
+            <-- 3rd grade modal
             <div class="scene-six center-align modal" id="modal3">
                 <div class="header">
                     <h1>3rd Grade Tutoring</h1>
@@ -112,7 +117,7 @@
                     <h2>Lets brush up on some skills.</h2>
                 </div>
                 <div class="choices">
-                    <!-- <button class="play-btn " data-goto="6">To 4th</button> -->
+                    <!-- <button class="play-btn " data-goto="6">To 4th</button> --
                     <button class="modal-close">Return</button>
                 </div>
             </div>
@@ -132,7 +137,7 @@
                 </div>
             </div>
 
-            <!-- 4th grade modal -->
+            <!-- 4th grade modal 
             <div class="scenes scene-eight center-align modal" id="modal4">
                 <div class="header">
                     <h1>4th Grade Tutoring</h1>
@@ -141,7 +146,7 @@
                     <h2>Lets brush up on some skills.</h2>
                 </div>
                 <div class="choices">
-                    <!-- <button class="play-btn " data-goto="8">Grad</button> -->
+                    <!-- <button class="play-btn " data-goto="8">Grad</button> 
                     <button class="modal-close">Return</button>
                 </div>
             </div>

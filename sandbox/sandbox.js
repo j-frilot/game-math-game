@@ -28,13 +28,13 @@ btns.forEach(function(btn){
         // conditional to show/hide each scene
         switch (btn.dataset.goto) {
         case '0': 
-            sceneOne.style.display = "block";
+            sceneOne.style.display = "flex";
             break;
 
         case '1'://2nd
             sceneOne.style.display = "none";
             sceneTwo.style.display = "none";
-            sceneThree.style.display = "block";
+            sceneThree.style.display = "flex";
             break;
         case '2':
             sceneThree.style.display = "none";
@@ -105,13 +105,12 @@ function playAddition(){
     answers.forEach(function(answer){
         answer.addEventListener("click", function(){
             
-            let timer = setInterval(gameTime, 2000);
+            // let timer = setInterval(gameTime, 2000);
 
             if(answer.innerHTML == additionAnswer) {
                 additionProblem(); 
                 count++
                 points.innerHTML = count;
-
             }
     
         })

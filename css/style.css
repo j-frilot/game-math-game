@@ -6,6 +6,7 @@
 
 body {
     background-color: #000;
+    color: #fff;
 }
 
 h1, h2, h3, h4, h5 {
@@ -14,7 +15,7 @@ h1, h2, h3, h4, h5 {
 }
 
 h1{
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin: 0;
 }
 
@@ -22,22 +23,39 @@ h2 {
     font-size: 2.5rem;
 }
 
-.container{
-    height: 100vh;
-    
+h3 {
+    font-size: 2rem;
 }
 
-.title-content{
+
+
+.container{
     height: 100vh;
     background: url('/images/math-bg-1.jpg');
     background-size: cover;
     background-position: center;
 }
 
-.scenes {
+.title-content{
     height: 100vh;
-    /* background: url('/images/math-bg-2.jpeg'); */
-    background-size: cover;
-    background-position:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+}
+
+.scenes{
+    height: 100vh;
+    /* background: url('/images/math-bg-2.jpeg');
+    background-size: cover;
+    background-position:center;  */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.modal {
+    color:#000;
+    padding: 20px 0;
 }
