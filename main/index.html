@@ -2,170 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
     <link rel="stylesheet" href="/css/style.css">
-    <title>GAME MAIN</title>
+    <title>MY GAME</title>
 </head>
 <body>
     
 
 
     <body>
-        <div class="title-container">
-            <div class="title-content">
-                <h1>Title Of The Game</h1>
-                <h2>Subtitle</h2>
-                <button class="play-btn" data-goto="1"><p>Begin</p></button>
+        <div class="container indigo ">
+            <div class="title-content center-align ">
+                <h1>Learn Math Game</h1>
+                <h2>Try to make it out of school.</h2>
+                <h2>You might learn something</h2>
+                <button class="play-btn " data-goto="0"><p>Begin</p></button>
             </div>
-        </div>
-        <!-- SCENES!!!!!!!!!!!! -->
-        <div class="scene-container">
-            
-            <div class="scene scene-one data-scene="1">
-                <div class="play-ground">\</div>
-                <div class="text-box">
-                    <p>scene one</p>
-                    <p>You’re traveling in the bearing sea on a fishing boat wish your crew
-                        Its been a long three weeks at sea and it’s finally time to come back home 
-                        You're looking forward to seeing your your new born son who you haven't met yet, and to seeing a doctor to see what to do about your leg that was injured while working during a storm. 
-                        Your crew of of 8 meet for dinner and you all disperse for the night.</p>
+
+            <div class="scenes scene-one center-align ">
+                <div class="header">
+                    <h1>Welcome to the 1st Grade!</h1>
                 </div>
-                <div class="inventory">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
-                    <img src="https://via.placeholder.com/50" alt="" class="tool">
+                <div class="content">
+                    <h2>What is the answer to this question?</h2>
                 </div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="2"><p>Smoke A Cigar</p></button>
-                    <button class="play-btn" data-goto="3"><p>Go Shower</p></button>
+                <div class="choices">
+                    <button class="play-btn modal-trigger" data-target="modal1">To 1st tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal1">To 1st tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal1">To 1st tutoring</button>
+                    <button class="play-btn " data-goto="1">To 2nd</button>
                 </div>
             </div>
 
-            <div class="scene scene-two data-scene="2">
-                <div class="play-ground">\</div>
-                <div class="text-box">
-                    <p>scene two - cigarette</p>
-                    <p>You head out to the deck with you last cigarette and think about your family back home
-                        You notice that it’s a cloudy, gray, rainy night. It’s not uncommon so you don’t think much of it other than it’s making it hard for you to enjoy your cigarette.
-                        All of a sudden, lightening strikes and one of the communication antennas on the superstructure falls from above you. 
-                        You hear Joe shout expletives from inside and you head in</p>
-                    
+            <!-- 1st grade modal -->
+            <div class="scenes scene-two center-align modal" id="modal1">
+                <div class="header">
+                    <h1>1st Grade Tutoring</h1>
                 </div>
-                <div class="inventory"></div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto=""><p>Start Now</p></button>
+                <div class="content">
+                    <h2>Lets brush up on some skills.</h2>
+                </div>
+                <div class="choices">
+                    <!-- <button class="play-btn " data-goto="2">To 2nd</button> -->
+                    <button class="modal-close">Return</button>
+                </div>   
+            </div>
+
+            <div class="scenes scene-three center-align">
+                <div class="header">
+                    <h1>Welcome to the 2nd Grade!</h1>
+                </div>
+                <div class="content">
+                    <h2>What is the answer to this question?</h2>
+                </div>
+                <div class="choices">
+                    <button class="play-btn modal-trigger" data-target="modal2" >To 2nd tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal2" >To 2nd tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal2" >To 2nd tutoring</button>
+                    <button class="play-btn " data-goto="2">To 3rd</button>
                 </div>
             </div>
 
-            <div class="scene scene-three data-scene="3">
-                <div class="play-ground">\</div>
-                <div class="text-box">
-                    <p>scene three - shower</p>
-                    
+            <!-- 2nd grade modal -->
+            <div class="scenes scene-four center-align modal" id="modal2">
+                <div class="header">
+                    <h1>2nd Grade Tutoring</h1>
                 </div>
-                <div class="inventory"></div>
-                <div class="button-section">
-                    
+                <div class="content">
+                    <h2>Lets brush up on some skills.</h2>
                 </div>
-            </div>
-
-            <div class="scene scene-four data-scene="4">
-                <div class="play-ground">\</div>
-                <div class="text-box">
-                    <p>scene four</p>
-                    
-                </div>
-                <div class="inventory"></div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="4"><p>Start Now</p></button>
+                <div class="choices">
+                    <!-- <button class="play-btn " data-goto="4">To 3rd</button> -->
+                    <button class="modal-close">Return</button>
                 </div>
             </div>
 
-            <div class="scene scene-five data-scene="5">
-                <div class="play-ground">\</div>
-                <div class="text-box">
-                    <p>scene five</p>
-                    
+            <div class="scenes scene-five center-align">
+                <div class="header">
+                    <h1>Welcome to the 3rd Grade!</h1>
                 </div>
-                <div class="inventory"></div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="5"><p>Start Now</p></button>
+                <div class="content">
+                    <h2>What is the answer to this question?</h2>
                 </div>
-            </div>
-
-            <div class="scene scene-six data-scene="6">
-                <div class="play-ground"></div>
-                <div class="text-box">
-                    <p>scene six</p>
-                    
-                </div>
-                <div class="inventory"></div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="6"><p>Start Now</p></button>
+                <div class="choices">
+                    <button class="play-btn modal-trigger" data-target="modal3" >To 3rd tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal3" >To 3rd tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal3" >To 3rd tutoring</button>
+                    <button class="play-btn " data-goto="3">To 4th</button>
                 </div>
             </div>
 
-            <div class="scene scene-seven data-scene="7">
-                <div class="play-ground"></div>
-                <div class="text-box">
-                    <p>scene seven</p>
-                     
+            <!-- 3rd grade modal -->
+            <div class="scenes scene-six center-align modal" id="modal3">
+                <div class="header">
+                    <h1>3rd Grade Tutoring</h1>
                 </div>
-                <div class="inventory"> </div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="7"><p>Start Now</p></button> 
+                <div class="content">
+                    <h2>Lets brush up on some skills.</h2>
                 </div>
-            </div>
-
-            <div class="scene scene-eight data-scene="8">
-                <div class="play-ground"> </div>
-                <div class="text-box">
-                    <p>scene eight</p>
-                    
-                </div>
-                <div class="inventory"></div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="8"><p>Start Now</p></button>
+                <div class="choices">
+                    <!-- <button class="play-btn " data-goto="6">To 4th</button> -->
+                    <button class="modal-close">Return</button>
                 </div>
             </div>
 
-            <div class="scene scene-nine data-scene="9">
-                <div class="play-ground"></div>
-                <div class="text-box">
-                    <p>scene nine</p>
-                    
+            <div class="scenes scene-seven center-align">
+                <div class="header">
+                    <h1>Welcome to the 4th Grade!</h1>
                 </div>
-                <div class="inventory"> </div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="9"><p>Start Now</p></button>
+                <div class="content">
+                    <h2>What is the answer to this question?</h2>
+                </div>
+                <div class="choices">
+                    <button class="play-btn modal-trigger" data-target="modal4" >To 4th tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal4" >To 4th tutoring</button>
+                    <button class="play-btn modal-trigger" data-target="modal4" >To 4th tutoring</button>
+                    <button class="play-btn " data-goto="4">Grad</button>
                 </div>
             </div>
 
-            <div class="scene scene-ten data-scene="10">
-                <div class="play-ground"></div>
-                <div class="text-box">
-                    <p>scene ten</p>
-                    
+            <!-- 4th grade modal -->
+            <div class="scenes scene-eight center-align modal" id="modal4">
+                <div class="header">
+                    <h1>4th Grade Tutoring</h1>
                 </div>
-                <div class="inventory"></div>
-                <div class="button-section">
-                    <button class="play-btn" data-goto="10"><p>Start Now</p></button>
+                <div class="content">
+                    <h2>Lets brush up on some skills.</h2>
                 </div>
+                <div class="choices">
+                    <!-- <button class="play-btn " data-goto="8">Grad</button> -->
+                    <button class="modal-close">Return</button>
+                </div>
+            </div>
+
+            <div class="scenes scene-nine">5 Hooray
+                
             </div>
         </div>
     
-        
-        
     
-    
-    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="js/app.js"></script>
     </body>
 

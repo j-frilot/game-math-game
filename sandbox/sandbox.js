@@ -17,55 +17,41 @@ for (i = 0; i < scenes.length; i++){
     scenes[i].style.display = "none";
 }
 
+
 // ON BUTTON CLICK, SWITCH TO NEXT SCENE
 btns.forEach(function(btn){
 
     btn.addEventListener("click", function(){
-        
+        additionProblem()
         titleContent.style.display = "none";
         
         // conditional to show/hide each scene
         switch (btn.dataset.goto) {
         case '0': 
             sceneOne.style.display = "block";
-            console.log(btn.dataset.goto);
             break;
 
         case '1'://2nd
             sceneOne.style.display = "none";
             sceneTwo.style.display = "none";
             sceneThree.style.display = "block";
-            console.log(btn.dataset.goto);
             break;
         case '2':
             sceneThree.style.display = "none";
             sceneFour.style.display = "none";
             sceneFive.style.display = "block";
-            console.log(btn.dataset.goto);
             break;
         case '3'://4th grade
             sceneFive.style.display = "none";
             sceneSix.style.display = "none";
             sceneSeven.style.display = "block";
-            console.log(btn.dataset.goto);
             break;
         case '4':
             sceneSeven.style.display = "none";
             sceneEight.style.display = "none";
             sceneNine.style.display = "block";
-            console.log(btn.dataset.goto);
             break;
-        }
-
-        // connecting button in html with info array in js
-        for (i = 0; i < sceneInfoArray.length; i++) {
-            if (sceneInfoArray[i].id == btn.dataset.goto ) {
-                // console.log(sceneInfoArray[i]);
-
-
-            }
-        }
-
+        };
     });
 });
 
@@ -73,4 +59,73 @@ btns.forEach(function(btn){
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, {});
-  });
+});
+
+
+
+
+
+let additionAnswer;
+
+
+function additionProblem(){
+    // PICKEING RANDOM NUMBERS FOR EQUATION
+    let additionProblem = document.querySelector(".addition-problem");
+    let addOne = Math.round((Math.random() * 50));
+    let addTwo = Math.round((Math.random() * 50));
+    additionProblem.innerHTML = `${addOne} + ${addTwo}`;
+    additionAnswer = addOne + addTwo;
+
+    // SELECTING RANDOM BOXES FOR RIGHT/WRONG ANSWERS
+    //loop to pick 3 wrong answers and boxe
+    for (i=0; i<3; i++) {
+
+        var wrongAnswer = Math.round((Math.random() * 50));
+        if (wrongAnswer === additionAnswer) {
+            wrongAnswer === Math.round((wrongAnswer * additionAnswer) + 11 );
+        }
+    
+        let wrongAnswerBox = Math.ceil(Math.random() * 4);
+        let wrongBoxContent = document.getElementById("answer" + wrongAnswerBox).innerHTML = wrongAnswer;
+    
+    }
+
+    //select one correct answer box
+    let additionAnswerBox = Math.ceil(Math.random() * 4);
+    let answerBoxContent = document.getElementById("answer" + additionAnswerBox).innerHTML = additionAnswer;
+    playAddition()
+}
+
+let count = document.getElementById("#count");
+
+
+//CHOOSE BUTTONS TO PICKS ANSWERS AND INCRIMENT SCORE
+function playAddition(){
+    let answers = document.querySelectorAll(".answer");
+    answers.forEach(function(answer){
+        answer.addEventListener("click", function(){
+            
+            let timer = setInterval(gameTime, 2000);
+
+            if(answer.innerHTML == additionAnswer) {
+                additionProblem(); 
+                count++
+                points.innerHTML = count;
+
+            }
+    
+        })
+    })
+}
+
+
+
+
+function gameTime() {
+   if(count < 15){
+       document.querySelector(".modal-one").click();
+   }
+}
+
+
+

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
     <link rel="stylesheet" href="/css/style.css">
@@ -18,7 +19,7 @@
                 <h1>Learn Math Game</h1>
                 <h2>Try to make it out of school.</h2>
                 <h2>You might learn something</h2>
-                <button class="play-btn " data-goto="0"><p>Begin</p></button>
+                <button class="btn-large play-btn " data-goto="0"><p>Begin</p></button>
             </div>
 
             <div class="scenes scene-one center-align ">
@@ -26,29 +27,37 @@
                     <h1>Welcome to the 1st Grade!</h1>
                 </div>
                 <div class="content">
-                    <h2>What is the answer to this question?</h2>
+                    <h3>Add the following expressions. You must earn 15 points within 20 seconds to advance to the 2nd grade.</h3>
+                    <h4 class="addition-problem"></h4>
                 </div>
-                <div class="choices">
-                    <button class="play-btn modal-trigger" data-target="modal1">To 1st tutoring</button>
-                    <button class="play-btn modal-trigger" data-target="modal1">To 1st tutoring</button>
-                    <button class="play-btn modal-trigger" data-target="modal1">To 1st tutoring</button>
-                    <button class="play-btn " data-goto="1">To 2nd</button>
+                <div class="answers">
+                    <button class="btn-large answer" id="answer1">0</button>
+                    <button class="btn-large answer" id="answer2">0</button>
+                    <button class="btn-large answer" id="answer3">0</button>
+                    <button class="btn-large answer" id="answer4">0</button>
                 </div>
+                <div class="points"><h3>Points: <span id="points"></span></h3></div>
+
+                <div class="answer-choices">
+                    <button class="modal-one modal-trigger" data-target="modal1">Need Help?</button>
             </div>
 
             <!-- 1st grade modal -->
-            <div class="scenes scene-two center-align modal" id="modal1">
+            <div class="scene-two center-align modal" id="modal1">
                 <div class="header">
-                    <h1>1st Grade Tutoring</h1>
+                    <h1>You need some tutoring I see.</h1>
                 </div>
                 <div class="content">
-                    <h2>Lets brush up on some skills.</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
                 </div>
                 <div class="choices">
                     <!-- <button class="play-btn " data-goto="2">To 2nd</button> -->
-                    <button class="modal-close">Return</button>
+                    <button class="play-btn " data-goto="1">To 2nd</button>
+                </div>
                 </div>   
             </div>
+
+            <!-- SECOND GRADE!! -->
 
             <div class="scenes scene-three center-align">
                 <div class="header">
@@ -66,7 +75,7 @@
             </div>
 
             <!-- 2nd grade modal -->
-            <div class="scenes scene-four center-align modal" id="modal2">
+            <div class="scene-four center-align modal" id="modal2">
                 <div class="header">
                     <h1>2nd Grade Tutoring</h1>
                 </div>
@@ -79,7 +88,7 @@
                 </div>
             </div>
 
-            <div class="scenes scene-five center-align">
+           <!----> <div class="scenes scene-five center-align">
                 <div class="header">
                     <h1>Welcome to the 3rd Grade!</h1>
                 </div>
@@ -95,7 +104,7 @@
             </div>
 
             <!-- 3rd grade modal -->
-            <div class="scenes scene-six center-align modal" id="modal3">
+            <div class="scene-six center-align modal" id="modal3">
                 <div class="header">
                     <h1>3rd Grade Tutoring</h1>
                 </div>
@@ -137,14 +146,14 @@
                 </div>
             </div>
 
-            <div class="scenes scene-nine">5 Hooray
+            <div class="scenes scene-nine"><h1>5 Hooray</h1> -->
                 
             </div>
         </div>
     
     
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/mat.js"></script>
+        
         <script src="sandbox.js"></script>
     </body>
 

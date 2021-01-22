@@ -8,17 +8,36 @@ body {
     background-color: #000;
 }
 
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+
 h1{
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin: 0;
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .container{
     height: 100vh;
+    
 }
 
+.title-content{
+    height: 100vh;
+    background: url('/images/math-bg-1.jpg');
+    background-size: cover;
+    background-position: center;
+}
 
+.scenes {
+    height: 100vh;
+    /* background: url('/images/math-bg-2.jpeg'); */
+    background-size: cover;
+    background-position:center;
+
+}
