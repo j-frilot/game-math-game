@@ -28,11 +28,13 @@
                     <h1>Welcome to the 1st Grade!</h1>
                 </div>
                 <div class="content">
-                    <h3>Add the following expressions. You must earn 15 points within 20 seconds to advance to the 2nd grade. Time remaining: <span class="time-number">20</span> seconds.</h3><button class="btn timer-btn">Start</button>
+                    <h3>Addition. Collect 15 points within 20 seconds to advance.
+                    <button class="btn start-timer"><h3>Go!</h3></button>
                     <h4 class="addition-problem equation"></h4>
+                    <h1 class="splash">Great Job!</h1>
                 </div>
+                
                 <div class="answers">
-                    <h1 class="splash">Good Job!</h1>
                     <button class="btn answer" id="answer1">0</button>
                     <button class="btn answer" id="answer2">0</button>
                     <button class="btn answer" id="answer3">0</button>
@@ -42,21 +44,20 @@
 
                 <div class="answer-choices">
                     <button class="btn modal-one modal-trigger" data-target="modal1">Need Help?</button>
-                    <button class="btn play-btn" data-goto="1">Skip</button>
+                    <button class="btn play-btn" data-goto="1">Next</button>
                 </div>
             </div>
 
             <!-- 1st grade modal -->
             <div class="scene-two center-align modal" id="modal1">
                 <div class="header">
-                    <h1>You need some tutoring I see.</h1>
+                    <h1>You Lost! Here's some help!</h1>
                 </div>
                 <div class="content">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
                 </div>
                 <div class="choices">
                     <button class="btn answer modal-close">Try again</button>
-                    <button class="btn play-btn modal-close " data-goto="1">Skip</button>
                 </div> 
             </div>
 
@@ -67,11 +68,12 @@
                     <h1>Welcome to the 2nd Grade!</h1>
                 </div>
                 <div class="content">
-                    <h3>Subtract the following expressions. You must earn 15 points within 20 seconds to advance to the 2nd grade.Time remaining: <span class="time-number">20</span> seconds.</h3><button class="btn timer-btn">Start</button>
-                    <h4 class="subtraction-problem"></h4>
+                    <h3>Subtraction. Collect 15 points within 20 seconds to advance.
+                    <button class="btn start-timer"><h3>Go!</h3></button>
+                    <h4 class="subtraction-problem equation"></h4>
+                    <h1 class="splash">Great Job!</h1>
                 </div>
-                <div class="answers">
-                    <h1 class="splash">Good Job!</h1>
+                <div class="answers ">
                     <button class="btn answer" id="sub-box1">0</button>
                     <button class="btn answer" id="sub-box2">0</button>
                     <button class="btn answer" id="sub-box3">0</button>
@@ -81,22 +83,8 @@
 
                 <div class="answer-choices">
                     <button class="btn modal-two modal-trigger" data-target="modal2">Need Help?</button>
-                    <button class="btn play-btn" data-goto="2">Skip</button>
+                    <button class="btn play-btn" data-goto="2">Next</button>
                 </div>
-            </div>
-
-            <!-- 2nd grade modal -->
-            <div class="scene-four center-align modal" id="modal2">
-                <div class="header">
-                    <h1>You need some tutoring I see.</h1>
-                </div>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
-                </div>
-                <div class="choices">
-                    <button class="btn answer modal-close">Try again</button>
-                    <button class="btn play-btn modal-close " data-goto="2">Skip</button>
-                </div> 
             </div>
 
             <!--//////////////////// THIRD GRADE //////////////////// -->
@@ -106,8 +94,10 @@
                     <h1>Welcome to the 3rd Grade!</h1>
                 </div>
                 <div class="content">
-                    <h3>Multiply the following expressions. You must earn 15 points within 20 seconds to advance to the 2nd grade. </h3>
-                    <h4 class="multiplication-problem"></h4>
+                    <h3>Multiply. Collect 15 points in 20 seconds to advance. </h3>
+                    <button class="btn start-timer"><h3>Go!</h3></button>
+                    <h4 class="multiplication-problem equation"></h4>
+                    <h1 class="splash">Great Job!</h1>
                 </div>
                 <div class="answers">
                     <button class="btn answer" id="mul-box1">0</button>
@@ -121,58 +111,6 @@
                     <button class="btn modal-three modal-trigger" data-target="modal3">Need Help?</button>
                     <button class="btn play-btn" data-goto="3">Skip</button>
                 </div>
-            </div>
-
-            <!-- 3rd grade modal -->
-            <div class="scene-six center-align modal" id="modal3">
-                <div class="header">
-                    <h1>You need some tutoring I see.</h1>
-                </div>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
-                </div>
-                <div class="choices">
-                    <button class="btn answer modal-close">Try again</button>
-                    <button class="btn play-btn modal-close" data-goto="3">Skip</button>
-                </div> 
-            </div>
-
-            <!--////////////////////// FOURTH 4TH GRADE ///////////////////////-->
-
-            <div class="scenes scene-seven center-align">
-                <div class="header">
-                    <h1>Welcome to the 4th Grade!</h1>
-                </div>
-                <div class="content">
-                    <h3>Divide the following expressions. You must earn 15 points within 20 seconds to advance to the 2nd grade.</h3>
-                    <h4 class="divide-problem"></h4>
-                </div>
-                <div class="answers">
-                    <button class="btn answer" id="answer1">0</button>
-                    <button class="btn answer" id="answer2">0</button>
-                    <button class="btn answer" id="answer3">0</button>
-                    <button class="btn answer" id="answer4">0</button>
-                </div>
-                <div class="points"><h3>Points: <span id="points"></span></h3></div>
-
-                <div class="answer-choices">
-                    <button class="btn modal-four modal-trigger" data-target="modal4">Need Help?</button>
-                    <button class="btn play-btn" data-goto="4">Skip</button>
-                </div>
-            </div>
-
-            <!-- 4th grade modal  -->
-            <div class="scenes scene-eight center-align modal" id="modal4">
-                <div class="header">
-                    <h1>You need some tutoring I see.</h1>
-                </div>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
-                </div>
-                <div class="choices">
-                    <button class="btn answer modal-close">Try again</button>
-                    <button class="btn play-btn modal-close" data-goto="4">Skip</button>
-                </div> 
             </div>
 
             <div class="scenes scene-nine"><h1>Hooray!!</h1>

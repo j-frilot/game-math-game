@@ -7,6 +7,11 @@ let sceneSeven = document.querySelector(".scene-seven");
 let sceneNine = document.querySelector(".scene-nine");
 let btns = document.querySelectorAll(".play-btn");
 
+
+
+
+
+
 //LOOP TO HIDE ALL SCENES 
 for (i = 0; i < scenes.length; i++){
     scenes[i].style.display = "none";
@@ -18,7 +23,15 @@ btns.forEach(function(btn){
     btn.addEventListener("click", function(){
         additionProblem()
         titleContent.style.display = "none";
-        
+        count = 0;
+        timeLeft = 5;
+  
+        for (i = 0; i < 3; i++) {
+            startTimerButton[i].innerHTML = "Go!"
+            var splash = document.querySelectorAll(".splash")
+            splash[i].style.display = "none";
+        }
+        console.log("new scene count reset:", count);
         // conditional to show/hide each scene
         switch (btn.dataset.goto) {
         case '0': 
@@ -40,10 +53,6 @@ btns.forEach(function(btn){
             sceneFive.style.display = "none";
             sceneSeven.style.display = "flex";
             break;
-        case '4':
-            sceneSeven.style.display = "none";
-            sceneNine.style.display = "flex";
-            break;
         };
     });
 });
@@ -57,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// ADDITION SCENE
+/////////// ADDITION SCENE////////////
 let additionAnswer;
 
 function additionProblem(){
@@ -99,8 +108,8 @@ function playAddition(){
             if(answer.innerHTML == additionAnswer) {
                 additionProblem(); 
                 count++
+                console.log("1st grade points:", count);
                 points.innerHTML = count;
-                console.log(points.innerHTML)
             }
     
         })
@@ -109,68 +118,8 @@ function playAddition(){
 
 
 
-
-
-
-// let startButton = document.querySelector(".timer-btn");
-
-//     startButton.addEventListener("click", function(){
-//         timer();
-//         
-// })
-
-let timerButtons = document.querySelectorAll(".timer-btn");
-    timerButtons.forEach(function (timerBtn){
-        timerBtn.addEventListener("click",function(){
-            timer()
-            let equation = document.querySelector(".equation");
-            equation.style.display = "block";
-        });
-        
-    });
-
-function timer(){
-
-    let timeNumber = document.querySelectorAll(".time-number");
-    timeNumber.forEach(function(timeDisplay){
-       
-
-        timeLeft = 3; 
-
-        setInterval(function(){
-            timeDisplay.innerHTML = timeLeft;
-            timeLeft -= 1;
-            if(timeLeft <= 0 && count > 1) {
-                clearInterval(timeLeft = 0)
-                let splash = document.querySelector(".splash");
-                splash.style.display = "block";
-            } else if(timeLeft <= 0 && count < 1) {
-                clearInterval(timeLeft = 0)
-                let splash = document.querySelector(".splash");
-                splash.innerHTML = "Game Over";
-                splash.style.display = "block";
-            }
-            
-            console.log(timeLeft);
-        }, 1000);
-    })
-
-    // if(count < 15){
-    //     document.querySelector(".modal-one").click();
-    //     document.querySelector(".modal-two").click();
-        
-    // };
-};
-
-
-
-
-
-
-
-// SUBTRACTION SCENE
+///////// SUBTRACTION SCENE////////////
 let subtractionAnswer;
-
 function subtractionProblem(){
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let subtractionProblem = document.querySelector(".subtraction-problem");
@@ -190,7 +139,6 @@ function subtractionProblem(){
     
         let wrongAnswerBox = Math.ceil(Math.random() * 4);
         let wrongBoxContent = document.getElementById("sub-box" + wrongAnswerBox).innerHTML = wrongAnswer;
-    
     }
 
     //select one correct answer box
@@ -198,8 +146,6 @@ function subtractionProblem(){
     let answerBoxContent = document.getElementById("sub-box" + subtractionAnswerBox).innerHTML = subtractionAnswer;
     playSubtraction();
 };
-
-
 
 //CHOOSE BUTTONS TO PICKS ANSWERS AND INCRIMENT SCORE
 function playSubtraction(){
@@ -211,10 +157,9 @@ function playSubtraction(){
             if(answer.innerHTML == subtractionAnswer) {
                 
                 count++
-                console.log(count)
+                console.log("2nd grade points",count)
                 subPoints.innerHTML = count;
                 subtractionProblem(); 
-                console.log(subPoints.innerHTML)
             };
     
         });
@@ -223,7 +168,8 @@ function playSubtraction(){
 
 
 
-// MULTIPLICATION SCENE
+
+/////// MULTIPLICATION SCENE///////
 let multiplicationAnswer;
 
 function multiplicationProblem(){
@@ -245,7 +191,6 @@ function multiplicationProblem(){
     
         let wrongAnswerBox = Math.ceil(Math.random() * 4);
         let wrongBoxContent = document.getElementById("mul-box" + wrongAnswerBox).innerHTML = wrongAnswer;
-    
     }
 
     //select one correct answer box
@@ -253,7 +198,6 @@ function multiplicationProblem(){
     let answerBoxContent = document.getElementById("mul-box" + multiplicationAnswerBox).innerHTML = multiplicationAnswer;
     playMultiplication();
 };
-
 
 
 //CHOOSE BUTTONS TO PICKS ANSWERS AND INCRIMENT SCORE
@@ -269,8 +213,48 @@ function playMultiplication(){
                 console.log(count)
                 mulPoints.innerHTML = count;
                 multiplicationProblem(); 
-                console.log(mulPoints.innerHTML)
             };
         });
     });
 };
+
+let startTimerButton = document.querySelectorAll(".start-timer");
+startTimerButton.forEach(function(timerButton){
+    timerButton.addEventListener("click", function(event){
+        timer();
+        let equation = document.querySelectorAll(".equation")
+        for (i = 0; i < 3; i++) {
+            equation[i].style.display = "block"
+        }
+        
+    });
+});
+
+function timer(){
+     timeLeft = 5;
+
+    let countDown = setInterval(() => {
+        timeLeft -= 1;
+        if(timeLeft <= 0){
+            clearInterval(countDown)
+            if(count < 2) {
+                document.querySelector(".modal-trigger").click();
+            } else if (count >= 2) {
+
+                for(i = 0; i < 3; i++) {
+                    var splash = document.querySelectorAll(".splash")
+                    splash[i].style.display = "block";
+                }
+                
+            }
+        }
+        // timerButton.innerHTML = timeLeft
+        console.log(timeLeft);
+        for (i = 0; i < 3; i++) {
+            startTimerButton[i].innerHTML = timeLeft
+        }
+    }, 1000);
+    
+   
+
+}
