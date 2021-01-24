@@ -33,6 +33,7 @@ btns.forEach(function(btn){
         case '2':
             sceneThree.style.display = "none";
             sceneFive.style.display = "flex";
+            timeLeft = 20;
             multiplicationProblem()
             break;
         case '3'://4th grade
@@ -91,12 +92,10 @@ let count = document.getElementById("#count");
 
 //CHOOSE BUTTONS TO PICKS ANSWERS AND INCRIMENT SCORE
 function playAddition(){
+    
     let answers = document.querySelectorAll(".answer");
     answers.forEach(function(answer){
         answer.addEventListener("click", function(){
-            
-            // let timer = setInterval(gameTime, 20000);
-
             if(answer.innerHTML == additionAnswer) {
                 additionProblem(); 
                 count++
@@ -111,17 +110,63 @@ function playAddition(){
 
 
 
-function gameTime() {
 
-    // document.querySelector(".remaining").innerHTML = clock;
-    // clock.innerHTML -=1
-    // console.log(clock.innerHTML)
 
-   if(count < 15){
-       document.querySelector(".modal-one").click();
+// let startButton = document.querySelector(".timer-btn");
+
+//     startButton.addEventListener("click", function(){
+//         timer();
+//         
+// })
+
+let timerButtons = document.querySelectorAll(".timer-btn");
+    timerButtons.forEach(function (timerBtn){
+        timerBtn.addEventListener("click",function(){
+            timer()
+            let equation = document.querySelector(".equation");
+            equation.style.display = "block";
+        });
+        
+    });
+
+function timer(){
+
+    let timeNumber = document.querySelectorAll(".time-number");
+    timeNumber.forEach(function(timeDisplay){
        
-   }
-}
+
+        timeLeft = 3; 
+
+        setInterval(function(){
+            timeDisplay.innerHTML = timeLeft;
+            timeLeft -= 1;
+            if(timeLeft <= 0 && count > 1) {
+                clearInterval(timeLeft = 0)
+                let splash = document.querySelector(".splash");
+                splash.style.display = "block";
+            } else if(timeLeft <= 0 && count < 1) {
+                clearInterval(timeLeft = 0)
+                let splash = document.querySelector(".splash");
+                splash.innerHTML = "Game Over";
+                splash.style.display = "block";
+            }
+            
+            console.log(timeLeft);
+        }, 1000);
+    })
+
+    // if(count < 15){
+    //     document.querySelector(".modal-one").click();
+    //     document.querySelector(".modal-two").click();
+        
+    // };
+};
+
+
+
+
+
+
 
 // SUBTRACTION SCENE
 let subtractionAnswer;
@@ -151,8 +196,8 @@ function subtractionProblem(){
     //select one correct answer box
     let subtractionAnswerBox = Math.ceil(Math.random() * 4);
     let answerBoxContent = document.getElementById("sub-box" + subtractionAnswerBox).innerHTML = subtractionAnswer;
-    playSubtraction()
-}
+    playSubtraction();
+};
 
 
 
@@ -161,11 +206,8 @@ function playSubtraction(){
     let answers = document.querySelectorAll(".answer");
     answers.forEach(function(answer){
         answer.addEventListener("click", function(){
-            
-            // let timer = setInterval(gameTime, 2000);
 
             let subPoints = document.getElementById("sub-points")
-
             if(answer.innerHTML == subtractionAnswer) {
                 
                 count++
@@ -173,11 +215,11 @@ function playSubtraction(){
                 subPoints.innerHTML = count;
                 subtractionProblem(); 
                 console.log(subPoints.innerHTML)
-            }
+            };
     
-        })
-    })
-}
+        });
+    });
+};
 
 
 
@@ -199,7 +241,7 @@ function multiplicationProblem(){
         var wrongAnswer = Math.round((Math.random() * 144));
         if (wrongAnswer === multiplicationAnswer) {
             wrongAnswer === Math.round(((wrongAnswer / 2 ) + 12));
-        }
+        };
     
         let wrongAnswerBox = Math.ceil(Math.random() * 4);
         let wrongBoxContent = document.getElementById("mul-box" + wrongAnswerBox).innerHTML = wrongAnswer;
@@ -209,8 +251,8 @@ function multiplicationProblem(){
     //select one correct answer box
     let multiplicationAnswerBox = Math.ceil(Math.random() * 4);
     let answerBoxContent = document.getElementById("mul-box" + multiplicationAnswerBox).innerHTML = multiplicationAnswer;
-    playMultiplication()
-}
+    playMultiplication();
+};
 
 
 
@@ -219,11 +261,8 @@ function playMultiplication(){
     let answers = document.querySelectorAll(".answer");
     answers.forEach(function(answer){
         answer.addEventListener("click", function(){
-            
-            // let timer = setInterval(gameTime, 2000);
 
             let mulPoints = document.getElementById("mul-points")
-
             if(answer.innerHTML == multiplicationAnswer) {
                 
                 count++
@@ -231,8 +270,7 @@ function playMultiplication(){
                 mulPoints.innerHTML = count;
                 multiplicationProblem(); 
                 console.log(mulPoints.innerHTML)
-            }
-    
-        })
-    })
-}
+            };
+        });
+    });
+};
