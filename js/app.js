@@ -231,15 +231,15 @@ startTimerButton.forEach(function(timerButton){
 });
 
 function timer(){
-     timeLeft = 5;
+     timeLeft = 15;
 
     let countDown = setInterval(() => {
         timeLeft -= 1;
         if(timeLeft <= 0){
             clearInterval(countDown)
-            if(count < 2) {
+            if(count < 10) {
                 document.querySelector(".modal-trigger").click();
-            } else if (count >= 2) {
+            } else if (count >= 10) {
 
                 for(i = 0; i < 3; i++) {
                     var splash = document.querySelectorAll(".splash")
