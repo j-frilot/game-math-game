@@ -1,70 +1,73 @@
-let titleContent = document.querySelector(".title-content");
-let scenes = document.querySelectorAll(".scenes");
-let sceneOne = document.querySelector(".scene-one");
-let sceneThree = document.querySelector(".scene-three");
-let sceneFive = document.querySelector(".scene-five");
-let sceneSeven = document.querySelector(".scene-seven");
-let sceneNine = document.querySelector(".scene-nine");
-let btns = document.querySelectorAll(".play-btn");
-
-
-
-
-
-
+const scenes = document.querySelectorAll(".scenes");
 //LOOP TO HIDE ALL SCENES 
 for (i = 0; i < scenes.length; i++){
     scenes[i].style.display = "none";
 }
 
-// ON BUTTON CLICK, SWITCH TO NEXT SCENE
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+// Main Controls
+const btns = document.querySelectorAll(".play-btn");
 btns.forEach(function(btn){
-
     btn.addEventListener("click", function(){
         additionProblem()
-        titleContent.style.display = "none";
+        tallyPoints();
+        
         count = 0;
-        timeLeft = 5;
-  
+        timeLeft = 30;
+        
+
         for (i = 0; i < 3; i++) {
             startTimerButton[i].innerHTML = "Go!"
-            var splash = document.querySelectorAll(".splash")
+            const splash = document.querySelectorAll(".splash")
             splash[i].style.display = "none";
         }
+
         console.log("new scene count reset:", count);
-        // conditional to show/hide each scene
+        // switch statement to show/hide each scene
+
+        const titleContent = document.querySelector(".title-content");
+        const sceneOne = document.querySelector(".scene-one");
+        const sceneTwo = document.querySelector(".scene-two");
+        const sceneThree = document.querySelector(".scene-three");
+
+        titleContent.style.display = "none";
+
         switch (btn.dataset.goto) {
         case '0': 
             sceneOne.style.display = "flex";
+            additionProblem();
+            // playAddition();
             break;
 
         case '1'://2nd
             sceneOne.style.display = "none";
-            sceneThree.style.display = "flex";
+            sceneTwo.style.display = "flex";
             subtractionProblem();
+            // playSubtraction();
             break;
         case '2':
-            sceneThree.style.display = "none";
-            sceneFive.style.display = "flex";
-            timeLeft = 20;
+            sceneTwo.style.display = "none";
+            sceneThree.style.display = "flex";
             multiplicationProblem()
-            break;
-        case '3'://4th grade
-            sceneFive.style.display = "none";
-            sceneSeven.style.display = "flex";
+            // playMultiplication();
             break;
         };
     });
 });
 
-//FUNCTION TO ACTIVATE MODAL
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+//ACTIVATE MODAL
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, {});
 });
 
 
-
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+//MATH
 
 /////////// ADDITION SCENE////////////
 let additionAnswer;
@@ -94,29 +97,7 @@ function additionProblem(){
     //select one correct answer box
     let additionAnswerBox = Math.ceil(Math.random() * 4);
     let answerBoxContent = document.getElementById("answer" + additionAnswerBox).innerHTML = additionAnswer;
-    playAddition()
 }
-
-let count = document.getElementById("#count");
-
-//CHOOSE BUTTONS TO PICKS ANSWERS AND INCRIMENT SCORE
-function playAddition(){
-    
-    let answers = document.querySelectorAll(".answer");
-    answers.forEach(function(answer){
-        answer.addEventListener("click", function(){
-            if(answer.innerHTML == additionAnswer) {
-                additionProblem(); 
-                count++
-                console.log("1st grade points:", count);
-                points.innerHTML = count;
-            }
-    
-        })
-    })
-}
-
-
 
 ///////// SUBTRACTION SCENE////////////
 let subtractionAnswer;
@@ -144,26 +125,6 @@ function subtractionProblem(){
     //select one correct answer box
     let subtractionAnswerBox = Math.ceil(Math.random() * 4);
     let answerBoxContent = document.getElementById("sub-box" + subtractionAnswerBox).innerHTML = subtractionAnswer;
-    playSubtraction();
-};
-
-//CHOOSE BUTTONS TO PICKS ANSWERS AND INCRIMENT SCORE
-function playSubtraction(){
-    let answers = document.querySelectorAll(".answer");
-    answers.forEach(function(answer){
-        answer.addEventListener("click", function(){
-
-            let subPoints = document.getElementById("sub-points")
-            if(answer.innerHTML == subtractionAnswer) {
-                
-                count++
-                console.log("2nd grade points",count)
-                subPoints.innerHTML = count;
-                subtractionProblem(); 
-            };
-    
-        });
-    });
 };
 
 
@@ -195,28 +156,42 @@ function multiplicationProblem(){
 
     //select one correct answer box
     let multiplicationAnswerBox = Math.ceil(Math.random() * 4);
-    let answerBoxContent = document.getElementById("mul-box" + multiplicationAnswerBox).innerHTML = multiplicationAnswer;
-    playMultiplication();
+    let answerBoxContent = document.getElementById("mul-box" + multiplicationAnswerBox).innerHTML = multiplicationAnswer;;
 };
 
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+// TALLY POINTS WHEN GET CORRECT ANSWER
 
-//CHOOSE BUTTONS TO PICKS ANSWERS AND INCRIMENT SCORE
-function playMultiplication(){
+function tallyPoints(){
     let answers = document.querySelectorAll(".answer");
+    let count = document.getElementById("#count");
+    let subPoints = document.getElementById("sub-points")
+    let mulPoints = document.getElementById("mul-points");
+
     answers.forEach(function(answer){
         answer.addEventListener("click", function(){
-
-            let mulPoints = document.getElementById("mul-points")
-            if(answer.innerHTML == multiplicationAnswer) {
-                
+            if(answer.innerHTML == additionAnswer ) {
                 count++
-                console.log(count)
+                console.log("1st grade points:", count);
+                points.innerHTML = count;
+                additionProblem(); 
+            } else if(answer.innerHTML == subtractionAnswer) {
+                count++
+                console.log("2nd grade points",count)
+                subPoints.innerHTML = count;
+                subtractionProblem(); 
+            } else if(answer.innerHTML == multiplicationAnswer) {
+                count++
+                console.log("3rd grade points", count)
                 mulPoints.innerHTML = count;
                 multiplicationProblem(); 
             };
-        });
-    });
-};
+        })
+    })
+}
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
 let startTimerButton = document.querySelectorAll(".start-timer");
 startTimerButton.forEach(function(timerButton){
@@ -231,30 +206,28 @@ startTimerButton.forEach(function(timerButton){
 });
 
 function timer(){
-     timeLeft = 15;
+     timeLeft = 30;
 
     let countDown = setInterval(() => {
         timeLeft -= 1;
         if(timeLeft <= 0){
-            clearInterval(countDown)
+            clearInterval(countDown);
             if(count < 10) {
                 document.querySelector(".modal-trigger").click();
             } else if (count >= 10) {
-
                 for(i = 0; i < 3; i++) {
                     var splash = document.querySelectorAll(".splash")
                     splash[i].style.display = "block";
                 }
-                
             }
         }
-        // timerButton.innerHTML = timeLeft
+        // timerButton.innerHTML = timeLeft;
         console.log(timeLeft);
         for (i = 0; i < 3; i++) {
             startTimerButton[i].innerHTML = timeLeft
         }
     }, 1000);
-    
-   
-
 }
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
