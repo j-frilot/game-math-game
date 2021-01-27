@@ -1,7 +1,13 @@
+let writeUps = document.querySelectorAll(".write-ups");
+writeUps = 0;
 const scenes = document.querySelectorAll(".scenes");
+let count = 0;
+let timeLeft = 30;
+
 //LOOP TO HIDE ALL SCENES 
 for (i = 0; i < scenes.length; i++){
     scenes[i].style.display = "none";
+    let writeUp = writeUps[i]
 }
 
 ////////////////////////////////////////////////////////////
@@ -12,13 +18,11 @@ btns.forEach(function(btn){
     btn.addEventListener("click", function(){
         additionProblem()
         tallyPoints();
-        
-        count = 0;
-        timeLeft = 30;
+    
         
 
         for (i = 0; i < 3; i++) {
-            startTimerButton[i].innerHTML = "Go!"
+            startTimerButton[i].innerHTML = `Start!`
             const splash = document.querySelectorAll(".splash")
             splash[i].style.display = "none";
         }
@@ -37,20 +41,17 @@ btns.forEach(function(btn){
         case '0': 
             sceneOne.style.display = "flex";
             additionProblem();
-            // playAddition();
             break;
 
         case '1'://2nd
             sceneOne.style.display = "none";
             sceneTwo.style.display = "flex";
             subtractionProblem();
-            // playSubtraction();
             break;
         case '2':
             sceneTwo.style.display = "none";
             sceneThree.style.display = "flex";
             multiplicationProblem()
-            // playMultiplication();
             break;
         };
     });
@@ -161,35 +162,98 @@ function multiplicationProblem(){
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
+// CHEATING INFO RANDOM and cheat pass/fail
+let cheatBtns = document.querySelectorAll(".cheat-btn");
+for (i = 0; i < cheatBtns.length; i++) {
+    cheatBtns[i].addEventListener("click", addCheatContent)
+}
+
+//adding content to (if cheated) modal based on passed/failed
+function addCheatContent(){
+    //array with content to fill modal if pass
+    let modalAddCheat = document.getElementById("modal-add-cheat");
+    let modalSubCheat = document.getElementById("modal-sub-cheat");
+    let modalMulCheat = document.getElementById("modal-mul-cheat");
+    let cheatInfo =[
+        `<div class="header">
+            <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
+        </div>
+        <div class="content">
+            <p>You can go ahead to the 2nd grade or if you want, learn to add since you were scred to take the quiz on your own.</p>
+        </div>
+        <div class="choices">
+            <button class="btn play-btn modal-close" data-goto="1">Close</button>
+            <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-add-tutoring">Go to tutoring</button>
+        </div>`,
+    
+        `<div class="header">
+            <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
+        </div>
+        <div class="content">
+            <p>You can go ahead to the 3nd grade or if you want, learn to add since you were scred to take the quiz on your own.</p>
+        </div>
+        <div class="choices">
+            <button class="btn play-btn modal-close" data-goto="2">Close</button>
+            <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-sub-tutoring">Go to tutoring</button>
+        </div>`,
+    
+        `<div class="header">
+            <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
+        </div>
+        <div class="content">
+            <p>You will be allowed to go continue; however, you should stop cheating.</p>
+        </div>
+        <div class="choices">
+            <button class="btn play-btn modal-close" data-goto="3">Close</button>
+            <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-mul-tutoring">Go to tutoring</button>
+        </div>`,
+    ]
+
+    let cheater = Math.random() >= 0.5;
+    console.log(cheater);
+
+    if (cheatBtns[0] && cheater > 1) {
+        modalAddCheat.innerHTML = cheatInfo[0];
+    } else if (cheatBtns[1] && cheater > 1) {
+        modalSubCheat.innerHTML = cheatInfo[1];
+    } else if (cheatBtns[2] && cheater > 1) {
+        modalMulCheat.innerHTML = cheatInfo[2];
+    }
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 // TALLY POINTS WHEN GET CORRECT ANSWER
 
 function tallyPoints(){
     let answers = document.querySelectorAll(".answer");
-    let count = document.getElementById("#count");
+    let addPoints = document.getElementById("add-points")
     let subPoints = document.getElementById("sub-points")
     let mulPoints = document.getElementById("mul-points");
 
     answers.forEach(function(answer){
         answer.addEventListener("click", function(){
             if(answer.innerHTML == additionAnswer ) {
-                count++
+                count++;
                 console.log("1st grade points:", count);
-                points.innerHTML = count;
-                additionProblem(); 
+                addPoints.innerHTML = count;
+                additionProblem();
             } else if(answer.innerHTML == subtractionAnswer) {
-                count++
+                count++;
                 console.log("2nd grade points",count)
                 subPoints.innerHTML = count;
                 subtractionProblem(); 
             } else if(answer.innerHTML == multiplicationAnswer) {
-                count++
+                count++;
                 console.log("3rd grade points", count)
                 mulPoints.innerHTML = count;
-                multiplicationProblem(); 
+                multiplicationProblem();
+                
             };
         })
     })
 }
+
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
@@ -204,28 +268,30 @@ startTimerButton.forEach(function(timerButton){
         
     });
 });
+let countDown;
 
 function timer(){
-     timeLeft = 30;
+    let countDown = setInterval(function(){
+        timeLeft--;
+        console.log(count);
+        if(timeLeft == 0){
+            // if(count >= 10) {
+            //     console.log("hey");
+            // } else if (count >= 10) {
+            //     console.log("hey");
+            // };
 
-    let countDown = setInterval(() => {
-        timeLeft -= 1;
-        if(timeLeft <= 0){
             clearInterval(countDown);
-            if(count < 10) {
-                document.querySelector(".modal-trigger").click();
-            } else if (count >= 10) {
-                for(i = 0; i < 3; i++) {
-                    var splash = document.querySelectorAll(".splash")
-                    splash[i].style.display = "block";
-                }
-            }
-        }
+            
+        };
+        
+        
+
         // timerButton.innerHTML = timeLeft;
         console.log(timeLeft);
-        for (i = 0; i < 3; i++) {
-            startTimerButton[i].innerHTML = timeLeft
-        }
+        // for (i = 0; i < 3; i++) {
+        //     startTimerButton[i].innerHTML = timeLeft
+        // }
     }, 1000);
 }
 

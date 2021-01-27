@@ -31,7 +31,7 @@ h3 {
 
 .container{
     height: 100vh;
-    background: url('/images/math-bg-1.jpg');
+    background: url('https://res.cloudinary.com/dsip2gx3i/image/upload/q_auto/v1611615440/math-game/math-bg-1_esvxds.jpg');
     background-size: cover;
     background-position: center;
 }

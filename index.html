@@ -25,11 +25,12 @@
 
             <div class="scenes scene-one center-align ">
                 <div class="header">
-                    <h1>Welcome to the 1st Grade!</h1>
+                    <h1>First Grade Pop Quiz!</h1>
                 </div>
                 <div class="content">
-                    <h3>Addition. Collect 10 points within 30 seconds to advance.
-                    <button class="btn start-timer"><h3>Go!</h3></button>
+                    <h3>Addition. You have 30 seconds to score 10 points.
+                    <button class="btn start-timer"><p>Start!</p></button>
+                    <button class="btn cheat-btn modal-trigger" data-target="modal-add-cheat">Cheat off of classmate</button>
                     <h4 class="addition-problem equation"></h4>
                     <h1 class="splash">Great Job!</h1>
                 </div>
@@ -40,36 +41,52 @@
                     <button class="btn answer" id="answer3">0</button>
                     <button class="btn answer" id="answer4">0</button>
                 </div>
-                <div class="points"><h3>Points: <span id="points"></span></h3></div>
+                <div class="points"><h3>Points: <span id="add-points">0</span></h3><h3>Write-Ups: <span class="Write-ups">0</span></h3></div>
+
 
                 <div class="answer-choices">
-                    <button class="btn modal-one modal-trigger" data-target="modal1">Need Help?</button>
+                    <button class="btn play-btn" data-goto="0">Back</button>
                     <button class="btn play-btn" data-goto="1">Next</button>
                 </div>
             </div>
 
-            <!-- 1st grade modal -->
-            <div class="center-align modal" id="modal1">
+            <!-- Cheating ADDING modal -->
+            <div class="center-align modal" id="modal-add-cheat">
                 <div class="header">
-                    <h1>You Lost! Here's some help!</h1>
+                    <h1>Your classmate failed his quiz!</h1>
                 </div>
                 <div class="content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas placeat, distinctio amet nam optio!</p>
+                    <p>The teacher caught you cheating and now you have a write up. You must go to tutoring before you can go to the 2nd grade.</p>
                 </div>
                 <div class="choices">
-                    <button class="btn answer modal-close">Try again</button>
+                    <button class="btn modal-close modal-trigger learn" data-target="modal-add-tutoring">Go to tutoring</button>
                 </div> 
             </div>
 
-            <!--////////////// SECOND GRADE!! ////////////////////-->
+            <!-- Addition Tutoring -->
+            <div class="center-align modal" id="modal-add-tutoring">
+                <div class="header">
+                    <h1>This is how you add</h1>
+                </div>
+                <div class="content">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3bcRzwTl19k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="choices">
+                    <button class="btn play-btn modal-close" data-goto="1">2nd Grade</button>
+                </div> 
+            </div>
+
+            
 
             <div class="scenes scene-two center-align">
                 <div class="header">
-                    <h1>Welcome to the 2nd Grade!</h1>
+                    <h1>2nd Grade Pop Quiz</h1>
                 </div>
                 <div class="content">
-                    <h3>Subtraction. Collect 10 points within 30 seconds to advance.
-                    <button class="btn start-timer"><h3>Go!</h3></button>
+                    <h3>Subtraction. You have 30 seconds to score 10 points.
+                    <button class="btn start-timer"><p>Start!</p>
+                    </button>
+                    <button class="btn cheat-btn modal-trigger" data-target="modal-sub-cheat">Cheat off of classmate</button>
                     <h4 class="subtraction-problem equation"></h4>
                     <h1 class="splash">Great Job!</h1>
                 </div>
@@ -79,23 +96,52 @@
                     <button class="btn answer" id="sub-box3">0</button>
                     <button class="btn answer" id="sub-box4">0</button>
                 </div>
-                <div class="points"><h3>Points: <span id="sub-points">0</span></h3></div>
+                <div class="points">
+                    <h3>Points: <span id="sub-points">0</span></h3>
+                    <h3>Write-Ups: <span class="Write-ups"></span></h3>
+                </div>
 
                 <div class="answer-choices">
-                    <button class="btn modal-two modal-trigger" data-target="modal2">Need Help?</button>
                     <button class="btn play-btn" data-goto="2">Next</button>
                 </div>
             </div>
 
-            <!--//////////////////// THIRD GRADE //////////////////// -->
+            <!-- Cheating SUBTRACTION modal -->
+            <div class="center-align modal" id="modal-sub-cheat">
+                <div class="header">
+                    <h1>Your classmate failed his quiz!</h1>
+                </div>
+                <div class="content">
+                    <p>The teacher caught you cheating and now you have a write up. You must go to tutoring before you can go to the 3rd grade.</p>
+                </div>
+                <div class="choices">
+                    <button class="btn cheat-btn  modal-close modal-trigger" data-target="modal-sub-tutoring">Go to tutoring</button>
+                </div> 
+            </div>
+
+            <!-- Subtraction Tutoring -->
+            <div class="center-align modal" id="modal-sub-tutoring">
+                <div class="header">
+                    <h1>This is how you subtract</h1>
+                </div>
+                <div class="content">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qM7B2nwpV1M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="choices">
+                    <button class="btn play-btn modal-close" data-goto="2">3rd Grade</button>
+                </div> 
+            </div>
+
+            
 
            <div class="scenes scene-three center-align">
                 <div class="header">
-                    <h1>Welcome to the 3rd Grade!</h1>
+                    <h1>3rd Grade Pop Quiz</h1>
                 </div>
                 <div class="content">
-                    <h3>Multiply. Collect 10 points in 30 seconds to advance. </h3>
-                    <button class="btn start-timer"><h3>Go!</h3></button>
+                    <h3>Multiply. You have 30 seconds to score 10 points. </h3>
+                    <button class="btn start-timer"><p>Start!</p></button>
+                    <button class="btn cheat-btn modal-trigger" data-target="modal-mul-cheat">Cheat off of classmate</button>
                     <h4 class="multiplication-problem equation"></h4>
                     <h1 class="splash">Great Job!</h1>
                 </div>
@@ -105,21 +151,49 @@
                     <button class="btn answer" id="mul-box3">0</button>
                     <button class="btn answer" id="mul-box4">0</button>
                 </div>
-                <div class="points"><h3>Points: <span id="mul-points"></span></h3></div>
+                <div class="points">
+                    <h3>Points: <span id="mul-points">0</span></h3>
+                    <h3>Write-Ups: <span class="Write-ups">0</span></h3>
+                </div>
 
                 <div class="answer-choices">
-                    <button class="btn modal-three modal-trigger" data-target="modal3">Need Help?</button>
                     <button class="btn play-btn" data-goto="3">Skip</button>
                 </div>
             </div>
-                
+
+            <!-- Cheating MULTIPLICATION modal -->
+            <div class="center-align modal" id="modal-mul-cheat">
+                <div class="header">
+                    <h1>Your classmate failed his quiz!</h1>
+                </div>
+                <div class="content">
+                    <p>The teacher caught you cheating and now you have a write up. You must go to tutoring before you can move on and complete the game.</p>
+                </div>
+                <div class="choices">
+                    <button class="btn cheat-btn  modal-close modal-trigger" data-target="modal-mul-tutoring">Go to tutoring</button>
+                </div> 
             </div>
+
+            <!-- Multiplication Tutoring -->
+            <div class="center-align modal" id="modal-mul-tutoring">
+                <div class="header">
+                    <h1>This is how you multiply</h1>
+                </div>
+                <div class="content">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7REaFBV9i2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="choices">
+                    <button class="btn play-btn modal-close" data-goto="3">Complete</button>
+                </div> 
+            </div>
+
+            
         </div>
     
     
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         
-        <script src="js/app.js"></script>
+        <script src="js/app_.js"></script>
     </body>
 
 </body>
