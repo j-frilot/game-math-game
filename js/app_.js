@@ -1,13 +1,13 @@
 let writeUps = document.querySelectorAll(".write-ups");
 writeUps = 0;
-const scenes = document.querySelectorAll(".scenes");
+let scenes = document.querySelectorAll(".scenes");
 let count = 0;
-let timeLeft = 30;
-
+let timeLeft = 10;
 //LOOP TO HIDE ALL SCENES 
 for (i = 0; i < scenes.length; i++){
     scenes[i].style.display = "none";
     let writeUp = writeUps[i]
+
 }
 
 ////////////////////////////////////////////////////////////
@@ -18,12 +18,12 @@ btns.forEach(function(btn){
     btn.addEventListener("click", function(){
         additionProblem()
         tallyPoints();
-    
+        
         
 
         for (i = 0; i < 3; i++) {
             startTimerButton[i].innerHTML = `Start!`
-            const splash = document.querySelectorAll(".splash")
+            let splash = document.querySelectorAll(".splash")
             splash[i].style.display = "none";
         }
 
@@ -41,6 +41,11 @@ btns.forEach(function(btn){
         case '0': 
             sceneOne.style.display = "flex";
             additionProblem();
+            function pauseVideo() {
+                let video = document.getElementById("video");
+                video.pauseVideo();
+            }
+            pauseVideo()
             break;
 
         case '1'://2nd
@@ -56,7 +61,6 @@ btns.forEach(function(btn){
         };
     });
 });
-
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 //ACTIVATE MODAL
@@ -163,63 +167,113 @@ function multiplicationProblem(){
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 // CHEATING INFO RANDOM and cheat pass/fail
-let cheatBtns = document.querySelectorAll(".cheat-btn");
-for (i = 0; i < cheatBtns.length; i++) {
-    cheatBtns[i].addEventListener("click", addCheatContent)
-}
+
 
 //adding content to (if cheated) modal based on passed/failed
 function addCheatContent(){
     //array with content to fill modal if pass
-    let modalAddCheat = document.getElementById("modal-add-cheat");
-    let modalSubCheat = document.getElementById("modal-sub-cheat");
-    let modalMulCheat = document.getElementById("modal-mul-cheat");
-    let cheatInfo =[
-        `<div class="header">
-            <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
-        </div>
-        <div class="content">
-            <p>You can go ahead to the 2nd grade or if you want, learn to add since you were scred to take the quiz on your own.</p>
-        </div>
-        <div class="choices">
-            <button class="btn play-btn modal-close" data-goto="1">Close</button>
-            <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-add-tutoring">Go to tutoring</button>
-        </div>`,
-    
-        `<div class="header">
-            <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
-        </div>
-        <div class="content">
-            <p>You can go ahead to the 3nd grade or if you want, learn to add since you were scred to take the quiz on your own.</p>
-        </div>
-        <div class="choices">
-            <button class="btn play-btn modal-close" data-goto="2">Close</button>
-            <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-sub-tutoring">Go to tutoring</button>
-        </div>`,
-    
-        `<div class="header">
-            <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
-        </div>
-        <div class="content">
-            <p>You will be allowed to go continue; however, you should stop cheating.</p>
-        </div>
-        <div class="choices">
-            <button class="btn play-btn modal-close" data-goto="3">Close</button>
-            <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-mul-tutoring">Go to tutoring</button>
-        </div>`,
-    ]
 
-    let cheater = Math.random() >= 0.5;
-    console.log(cheater);
+    let cheatBtns = document.querySelectorAll(".cheat-btn");
+    for (i = 0; i < cheatBtns.length; i++) {
+        cheatBtns[i].addEventListener("click", function(e){
+            
+            let modalAddCheat = document.getElementById("modal-add-cheat");
+            let modalSubCheat = document.getElementById("modal-sub-cheat");
+            let modalMulCheat = document.getElementById("modal-mul-cheat");
+            let cheatInfo =[
+                `<div class="header">
+                    <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
+                </div>
+                <div class="content">
+                    <p>You can go ahead to the 2nd grade or if you want, learn to add since you were scred to take the quiz on your own.</p>
+                </div>
+                <div class="choices">
+                <button class="btn play-btn modal-close">Close</button>
+                    <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-add-tutoring">Learn To Add</button>
+                </div>`,
 
-    if (cheatBtns[0] && cheater > 1) {
-        modalAddCheat.innerHTML = cheatInfo[0];
-    } else if (cheatBtns[1] && cheater > 1) {
-        modalSubCheat.innerHTML = cheatInfo[1];
-    } else if (cheatBtns[2] && cheater > 1) {
-        modalMulCheat.innerHTML = cheatInfo[2];
-    }
-}
+                `<div class="header">
+                    <h1>Your classmate failed his quiz!</h1>
+                </div>
+                <div class="content">
+                    <p>The teacher caught you cheating and now you have a write up. You must go to tutoring before you can go to the 2nd grade.</p>
+                </div>
+                <div class="choices">
+                    <button class="btn modal-close modal-trigger learn" data-target="modal-add-tutoring">Go to tutoring</button>
+                </div>`,
+            
+                `<div class="header">
+                    <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
+                </div>
+                <div class="content">
+                    <p>You can go ahead to the 3nd grade or if you want, learn to add since you were scred to take the quiz on your own.</p>
+                </div>
+                <div class="choices">
+                    <button class="btn play-btn modal-close" data-goto="2">Close</button>
+                    <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-sub-tutoring">Go to tutoring</button>
+                </div>`,
+
+                `<div class="header">
+                    <h1>Your classmate failed his quiz!</h1>
+                </div>
+                <div class="content">
+                    <p>The teacher caught you cheating and now you have a write up. You must go to tutoring before you can go to the 3rd grade.</p>
+                </div>
+                <div class="choices">
+                    <button class="btn cheat-btn  modal-close modal-trigger" data-target="modal-sub-tutoring">Go to tutoring</button>
+                </div> `,
+            
+                `<div class="header">
+                    <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
+                </div>
+                <div class="content">
+                    <p>You will be allowed to go continue; however, you should stop cheating.</p>
+                </div>
+                <div class="choices">
+                    <button class="btn play-btn modal-close" data-goto="3">Close</button>
+                    <button class="btn cheat-btn modal-close modal-trigger" data-target="modal-mul-tutoring">Go to tutoring</button>
+                </div>`,
+
+                `<div class="header">
+                    <h1>Your classmate failed his quiz!</h1>
+                </div>
+                <div class="content">
+                    <p>The teacher caught you cheating and now you have a write up. You must go to tutoring before you can move on and complete the game.</p>
+                </div>
+                <div class="choices">
+                    <button class="btn cheat-btn  modal-close modal-trigger" data-target="modal-mul-tutoring">Go to tutoring</button>
+                </div>`
+            ];
+            
+            console.log(e.target);
+            console.log(Array.from(cheatBtns));
+
+
+            let cheater = Math.round(Math.random());
+            
+            if (cheater === 1){
+                
+                if (cheatBtns[0]) {
+                    modalAddCheat.innerHTML = cheatInfo[0];
+                } else if (cheatBtns[1]) {
+                    modalSubCheat.innerHTML = cheatInfo[2];
+                } else if (cheatBtns[2]) {
+                    modalMulCheat.innerHTML = cheatInfo[4];
+                } ;
+            } else if (cheater === 0){
+                if (cheatBtns[0]) {
+                    modalAddCheat.innerHTML = cheatInfo[1];
+                } else if (cheatBtns[1]) {
+                    modalSubCheat.innerHTML = cheatInfo[3];
+                } else if (cheatBtns[2]) {
+                    modalMulCheat.innerHTML = cheatInfo[5];
+                } ;
+            }
+        });
+    };
+};
+
+addCheatContent()
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -259,41 +313,55 @@ function tallyPoints(){
 
 let startTimerButton = document.querySelectorAll(".start-timer");
 startTimerButton.forEach(function(timerButton){
-    timerButton.addEventListener("click", function(event){
-        timer();
+    timerButton.addEventListener("click", function(){
+
+        
         let equation = document.querySelectorAll(".equation")
         for (i = 0; i < 3; i++) {
             equation[i].style.display = "block"
         }
-        
+
+        console.log("timerButton",timerButton);
+        timerButton.innerHTML = timeLeft;
+        timer();
     });
 });
+
+
 let countDown;
 
 function timer(){
     let countDown = setInterval(function(){
-        timeLeft--;
-        console.log(count);
-        if(timeLeft == 0){
-            // if(count >= 10) {
-            //     console.log("hey");
-            // } else if (count >= 10) {
-            //     console.log("hey");
-            // };
+        timeLeft = timeLeft - 1;
+        
+        console.log("timeLeft",timeLeft);
+        console.log("count",count);
 
-            clearInterval(countDown);
+        if(timeLeft == 0){
+            if(count >= 1) {
+                console.log("hey");
+                // let splash = document.querySelectorAll(".splash")
+                // splash.style.display = "block";
+            }
             
+            clearInterval(countDown);
+            console.log("over");
+            timeLeft = 10;
         };
         
         
 
-        // timerButton.innerHTML = timeLeft;
-        console.log(timeLeft);
-        // for (i = 0; i < 3; i++) {
-        //     startTimerButton[i].innerHTML = timeLeft
-        // }
+        for (i = 0; i < 3; i++) {
+            startTimerButton[i].innerHTML = timeLeft
+        }
+        
     }, 1000);
+    
 }
+
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
+
+
+
