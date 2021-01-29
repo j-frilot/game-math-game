@@ -14,8 +14,8 @@ for (i = 0; i < scenes.length; i++){
 ////////////////////////////////////////////////////////////
 // Main Controls
 const btns = document.querySelectorAll(".play-btn");
-btns.forEach(function(btn){
-    btn.addEventListener("click", function(){
+btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
         additionProblem()
         tallyPoints();
         
@@ -27,7 +27,6 @@ btns.forEach(function(btn){
             splash[i].style.display = "none";
         }
 
-        console.log("new scene count reset:", count);
         // switch statement to show/hide each scene
 
         const titleContent = document.querySelector(".title-content");
@@ -41,11 +40,6 @@ btns.forEach(function(btn){
         case '0': 
             sceneOne.style.display = "flex";
             additionProblem();
-            function pauseVideo() {
-                let video = document.getElementById("video");
-                video.pauseVideo();
-            }
-            pauseVideo()
             break;
 
         case '1'://2nd
@@ -64,7 +58,7 @@ btns.forEach(function(btn){
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 //ACTIVATE MODAL
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, {});
 });
@@ -77,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /////////// ADDITION SCENE////////////
 let additionAnswer;
 
-function additionProblem(){
+var additionProblem = () => {
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let additionProblem = document.querySelector(".addition-problem");
     let addOne = Math.round((Math.random() * 50));
@@ -87,7 +81,7 @@ function additionProblem(){
 
     // SELECTING RANDOM BOXES FOR RIGHT/WRONG ANSWERS
     //loop to pick 3 wrong answers and boxe
-    for (i=0; i<3; i++) {
+    for (let i = 0; i < 3; i++) {
 
         var wrongAnswer = Math.round((Math.random() * 50));
         if (wrongAnswer === additionAnswer) {
@@ -104,9 +98,10 @@ function additionProblem(){
     let answerBoxContent = document.getElementById("answer" + additionAnswerBox).innerHTML = additionAnswer;
 }
 
+
 ///////// SUBTRACTION SCENE////////////
 let subtractionAnswer;
-function subtractionProblem(){
+var subtractionProblem = () => {
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let subtractionProblem = document.querySelector(".subtraction-problem");
     let subtractOne = Math.round((Math.random() * 20));
@@ -116,7 +111,7 @@ function subtractionProblem(){
 
     // SELECTING RANDOM BOXES FOR RIGHT/WRONG ANSWERS
     //loop to pick 3 wrong answers and boxs
-    for (i=0; i<3; i++) {
+    for (let i = 0; i < 3; i++) {
 
         var wrongAnswer = Math.round((Math.random() * 20));
         if (wrongAnswer === subtractionAnswer) {
@@ -138,7 +133,7 @@ function subtractionProblem(){
 /////// MULTIPLICATION SCENE///////
 let multiplicationAnswer;
 
-function multiplicationProblem(){
+var multiplicationProblem = () => {
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let multiplicationProblem = document.querySelector(".multiplication-problem");
     let multiplyOne = Math.round((Math.random() * 13));
@@ -148,7 +143,7 @@ function multiplicationProblem(){
 
     // SELECTING RANDOM BOXES FOR RIGHT/WRONG ANSWERS
     //loop to pick 3 wrong answers and boxs
-    for (i=0; i<3; i++) {
+    for (let i = 0; i < 3; i++) {
 
         var wrongAnswer = Math.round((Math.random() * 144));
         if (wrongAnswer === multiplicationAnswer) {
@@ -170,17 +165,16 @@ function multiplicationProblem(){
 
 
 //adding content to (if cheated) modal based on passed/failed
-function addCheatContent(){
+var addCheatContent = (() => {
     //array with content to fill modal if pass
 
-    let cheatBtns = document.querySelectorAll(".cheat-btn");
-    for (i = 0; i < cheatBtns.length; i++) {
-        cheatBtns[i].addEventListener("click", function(e){
-            
-            let modalAddCheat = document.getElementById("modal-add-cheat");
-            let modalSubCheat = document.getElementById("modal-sub-cheat");
-            let modalMulCheat = document.getElementById("modal-mul-cheat");
-            let cheatInfo =[
+    const cheatBtn = document.querySelectorAll(".cheat-btn");
+    cheatBtn.forEach((cBtn) => {
+        cBtn.addEventListener("click", () => {
+            var modalAddCheat = document.getElementById("modal-add-cheat");
+            var modalSubCheat = document.getElementById("modal-sub-cheat");
+            var modalMulCheat = document.getElementById("modal-mul-cheat");
+            var cheatInfo =[
                 `<div class="header">
                     <h1>You got lucky. Your classmate passed and you didn't get caught.</h1>
                 </div>
@@ -244,49 +238,56 @@ function addCheatContent(){
                     <button class="btn cheat-btn  modal-close modal-trigger" data-target="modal-mul-tutoring">Go to tutoring</button>
                 </div>`
             ];
-            
-            console.log(e.target);
-            console.log(Array.from(cheatBtns));
 
+            var cheater = Math.round(Math.random());
 
-            let cheater = Math.round(Math.random());
-            
-            if (cheater === 1){
-                
-                if (cheatBtns[0]) {
+            if (cheater) {
+                switch (cBtn.dataset.cheat) {
+                case "1":
                     modalAddCheat.innerHTML = cheatInfo[0];
-                } else if (cheatBtns[1]) {
+                    break;
+                case "2":
                     modalSubCheat.innerHTML = cheatInfo[2];
-                } else if (cheatBtns[2]) {
+                    break;
+                case "3":
                     modalMulCheat.innerHTML = cheatInfo[4];
-                } ;
-            } else if (cheater === 0){
-                if (cheatBtns[0]) {
+                    break;
+                default:
+                    break;
+                }
+            } else {
+                switch (cBtn.dataset.cheat) {
+                case "1":
                     modalAddCheat.innerHTML = cheatInfo[1];
-                } else if (cheatBtns[1]) {
+                    break;
+                case "2":
                     modalSubCheat.innerHTML = cheatInfo[3];
-                } else if (cheatBtns[2]) {
+                    break;
+                case "3":
                     modalMulCheat.innerHTML = cheatInfo[5];
-                } ;
+                    break;
+                default:
+                    break;
+                }
             }
+               
         });
-    };
-};
-
-addCheatContent()
+    
+    });
+})()
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 // TALLY POINTS WHEN GET CORRECT ANSWER
 
-function tallyPoints(){
+var tallyPoints = () =>{
     let answers = document.querySelectorAll(".answer");
-    let addPoints = document.getElementById("add-points")
-    let subPoints = document.getElementById("sub-points")
+    let addPoints = document.getElementById("add-points");
+    let subPoints = document.getElementById("sub-points");
     let mulPoints = document.getElementById("mul-points");
 
-    answers.forEach(function(answer){
-        answer.addEventListener("click", function(){
+    answers.forEach((answer) => {
+        answer.addEventListener("click", () => {
             if(answer.innerHTML == additionAnswer ) {
                 count++;
                 console.log("1st grade points:", count);
@@ -304,16 +305,16 @@ function tallyPoints(){
                 multiplicationProblem();
                 
             };
-        })
-    })
-}
+        });
+    });
+};
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
 let startTimerButton = document.querySelectorAll(".start-timer");
-startTimerButton.forEach(function(timerButton){
-    timerButton.addEventListener("click", function(){
+startTimerButton.forEach((timerButton) => {
+    timerButton.addEventListener("click",() => {
 
         
         let equation = document.querySelectorAll(".equation")
@@ -321,7 +322,7 @@ startTimerButton.forEach(function(timerButton){
             equation[i].style.display = "block"
         }
 
-        console.log("timerButton",timerButton);
+ 
         timerButton.innerHTML = timeLeft;
         timer();
     });
@@ -330,25 +331,17 @@ startTimerButton.forEach(function(timerButton){
 
 let countDown;
 
-function timer(){
-    let countDown = setInterval(function(){
+var timer = () =>{
+    let countDown = setInterval(() => {
         timeLeft = timeLeft - 1;
-        
-        console.log("timeLeft",timeLeft);
-        console.log("count",count);
+
 
         if(timeLeft == 0){
-            if(count >= 1) {
-                console.log("hey");
-                // let splash = document.querySelectorAll(".splash")
-                // splash.style.display = "block";
-            }
+            count >= 1? console.log("yes") : console.log("no");
             
             clearInterval(countDown);
-            console.log("over");
             timeLeft = 10;
         };
-        
         
 
         for (i = 0; i < 3; i++) {
@@ -357,11 +350,8 @@ function timer(){
         
     }, 1000);
     
-}
+};
 
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
-
-
-
