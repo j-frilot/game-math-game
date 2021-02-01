@@ -1,14 +1,18 @@
-let writeUps = document.querySelectorAll(".write-ups");
-writeUps = 0;
 let scenes = document.querySelectorAll(".scenes");
+const sceneOne = document.querySelector(".scene-one");
+const sceneTwo = document.querySelector(".scene-two");
+const sceneThree = document.querySelector(".scene-three");
+const sceneFour = document.querySelector(".scene-four");
 let count = 0;
-let timeLeft = 10;
-//LOOP TO HIDE ALL SCENES 
+let timeLeft = 20;
+
+
+// LOOP TO HIDE ALL SCENES 
 for (i = 0; i < scenes.length; i++){
     scenes[i].style.display = "none";
-    let writeUp = writeUps[i]
-
 }
+
+
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -22,17 +26,13 @@ btns.forEach((btn) => {
         
 
         for (i = 0; i < 3; i++) {
-            startTimerButton[i].innerHTML = `Start!`
-            let splash = document.querySelectorAll(".splash")
-            splash[i].style.display = "none";
+            startTimerButton[i].innerHTML = `Start!`;
         }
 
         // switch statement to show/hide each scene
-
+        
         const titleContent = document.querySelector(".title-content");
-        const sceneOne = document.querySelector(".scene-one");
-        const sceneTwo = document.querySelector(".scene-two");
-        const sceneThree = document.querySelector(".scene-three");
+        
 
         titleContent.style.display = "none";
 
@@ -164,6 +164,8 @@ var multiplicationProblem = () => {
 // CHEATING INFO RANDOM and cheat pass/fail
 
 
+
+
 //adding content to (if cheated) modal based on passed/failed
 var addCheatContent = (() => {
     //array with content to fill modal if pass
@@ -240,6 +242,7 @@ var addCheatContent = (() => {
             ];
 
             var cheater = Math.round(Math.random());
+            
 
             if (cheater) {
                 switch (cBtn.dataset.cheat) {
@@ -270,45 +273,41 @@ var addCheatContent = (() => {
                     break;
                 }
             }
-               
         });
-    
     });
 })()
+
+
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 // TALLY POINTS WHEN GET CORRECT ANSWER
-
+let addPoints = document.getElementById("add-points");
+let subPoints = document.getElementById("sub-points");
+let mulPoints = document.getElementById("mul-points");
 var tallyPoints = () =>{
     let answers = document.querySelectorAll(".answer");
-    let addPoints = document.getElementById("add-points");
-    let subPoints = document.getElementById("sub-points");
-    let mulPoints = document.getElementById("mul-points");
+
 
     answers.forEach((answer) => {
         answer.addEventListener("click", () => {
             if(answer.innerHTML == additionAnswer ) {
                 count++;
-                console.log("1st grade points:", count);
                 addPoints.innerHTML = count;
                 additionProblem();
             } else if(answer.innerHTML == subtractionAnswer) {
                 count++;
-                console.log("2nd grade points",count)
                 subPoints.innerHTML = count;
                 subtractionProblem(); 
             } else if(answer.innerHTML == multiplicationAnswer) {
                 count++;
-                console.log("3rd grade points", count)
                 mulPoints.innerHTML = count;
                 multiplicationProblem();
-                
+
             };
         });
     });
 };
-
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
@@ -316,38 +315,45 @@ let startTimerButton = document.querySelectorAll(".start-timer");
 startTimerButton.forEach((timerButton) => {
     timerButton.addEventListener("click",() => {
 
-        
         let equation = document.querySelectorAll(".equation")
         for (i = 0; i < 3; i++) {
             equation[i].style.display = "block"
         }
 
- 
         timerButton.innerHTML = timeLeft;
         timer();
+        
+        timerButton.style.display = "none"
+
     });
 });
 
 
 let countDown;
 
+
 var timer = () =>{
     let countDown = setInterval(() => {
-        timeLeft = timeLeft - 1;
-
+        timeLeft--
 
         if(timeLeft == 0){
-            count >= 1? console.log("yes") : console.log("no");
-            
             clearInterval(countDown);
-            timeLeft = 10;
-        };
-        
+            timeLeft = 20;
 
-        for (i = 0; i < 3; i++) {
-            startTimerButton[i].innerHTML = timeLeft
+            //go to grad scene if pass 3rd grade
+            if(mulPoints.innerHTML >= 10) {
+                sceneFour.style.display = "block"
+                sceneThree.style.display = "none"
+            } 
+
+        };
+
+        let timer = document.querySelectorAll(".timer")
+        for (i = 0; i < 3; i ++){
+            timer[i].innerHTML = timeLeft
         }
-        
+
+
     }, 1000);
     
 };
