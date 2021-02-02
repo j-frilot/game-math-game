@@ -5,7 +5,7 @@ const sceneThree = document.querySelector(".scene-three");
 const sceneFour = document.querySelector(".scene-four");
 let count = 0;
 let misses = 0;
-let timeLeft = 10;
+let timeLeft = 20;
 
 
 // LOOP TO HIDE ALL SCENES 
@@ -317,28 +317,7 @@ var tallyPoints = () =>{
 
             }
             
-            if(answer.innerHTML !== additionAnswer ) {
-                misses++;
-                console.log("1st grade mistakes",misses)
-                addMistakes.innerHTML = misses;
-                additionProblem();
-            } else if(answer.innerHTML !== subtractionAnswer) {
-                misses++;
-                console.log("2nd grade misses", misses)
-                subMistakes.innerHTML = misses;
-                subtractionProblem(); 
-            } else if(answer.innerHTML !== multiplicationAnswer) {
-                misses++;
-                console.log("2nd grade misses",misses)
-                mulMistakes.innerHTML = misses;
-                multiplicationProblem();
-
-            };
-
-            if(misses == 3){
-                document.querySelector(".scene-one").style.display = "none"
-                document.querySelector(".scene-five").style.display = "flex"
-            }
+            
         });
     });
 };
@@ -372,10 +351,10 @@ var timer = () =>{
 
         if(timeLeft == 0){
             clearInterval(countDown);
-            timeLeft = 10;
+            timeLeft = 20;
 
             //go to grad scene if pass 3rd grade
-            if(mulPoints.innerHTML >= 5) {
+            if(mulPoints.innerHTML >= 10) {
                 // console.log("mulpoint win");
                 sceneFour.style.display = "block"
                 sceneThree.style.display = "none"
