@@ -95,3 +95,13 @@ h4 {
 .scene-four h2 {
     font-size: 3rem;
 }
+
+.modal {
+    border-radius: 5px;
+    border: cornflowerblue 5px solid;
+    background-color: darkslategrey;
+}
+
+.scene-five {
+    
+}

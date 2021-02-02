@@ -4,6 +4,7 @@ const sceneTwo = document.querySelector(".scene-two");
 const sceneThree = document.querySelector(".scene-three");
 const sceneFour = document.querySelector(".scene-four");
 let count = 0;
+let misses = 0;
 let timeLeft = 20;
 
 
@@ -40,12 +41,16 @@ btns.forEach((btn) => {
         case '0': 
             sceneOne.style.display = "flex";
             additionProblem();
+            count = 0
+            misses = 0
             break;
 
         case '1'://2nd
             sceneOne.style.display = "none";
             sceneTwo.style.display = "flex";
             subtractionProblem();
+            count = 0
+            misses = 0
             break;
         case '2':
             sceneTwo.style.display = "none";
@@ -285,6 +290,9 @@ var addCheatContent = (() => {
 let addPoints = document.getElementById("add-points");
 let subPoints = document.getElementById("sub-points");
 let mulPoints = document.getElementById("mul-points");
+let addMistakes = document.getElementById("add-mistakes");
+let subMistakes = document.getElementById("sub-mistakes");
+let mulMistakes = document.getElementById("mul-mistakes");
 var tallyPoints = () =>{
     let answers = document.querySelectorAll(".answer");
 
@@ -293,18 +301,44 @@ var tallyPoints = () =>{
         answer.addEventListener("click", () => {
             if(answer.innerHTML == additionAnswer ) {
                 count++;
+                console.log("1st grade points:", count);
                 addPoints.innerHTML = count;
                 additionProblem();
             } else if(answer.innerHTML == subtractionAnswer) {
                 count++;
+                console.log("2nd grade points",count)
                 subPoints.innerHTML = count;
                 subtractionProblem(); 
             } else if(answer.innerHTML == multiplicationAnswer) {
                 count++;
+                console.log("3rd grade points", count)
                 mulPoints.innerHTML = count;
                 multiplicationProblem();
 
+            }
+            
+            if(answer.innerHTML !== additionAnswer ) {
+                misses++;
+                console.log("1st grade mistakes",misses)
+                addMistakes.innerHTML = misses;
+                additionProblem();
+            } else if(answer.innerHTML !== subtractionAnswer) {
+                misses++;
+                console.log("2nd grade misses", misses)
+                subMistakes.innerHTML = misses;
+                subtractionProblem(); 
+            } else if(answer.innerHTML !== multiplicationAnswer) {
+                misses++;
+                console.log("2nd grade misses",misses)
+                mulMistakes.innerHTML = misses;
+                multiplicationProblem();
+
             };
+
+            if(misses == 3){
+                document.querySelector(".scene-one").style.display = "none"
+                document.querySelector(".scene-five").style.display = "flex"
+            }
         });
     });
 };
@@ -342,6 +376,7 @@ var timer = () =>{
 
             //go to grad scene if pass 3rd grade
             if(mulPoints.innerHTML >= 10) {
+                // console.log("mulpoint win");
                 sceneFour.style.display = "block"
                 sceneThree.style.display = "none"
             } 
