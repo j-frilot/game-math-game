@@ -5,7 +5,7 @@ const sceneThree = document.querySelector(".scene-three");
 const sceneFour = document.querySelector(".scene-four");
 let count = 0;
 let misses = 0;
-let timeLeft = 20;
+let timeLeft = 10;
 
 
 // LOOP TO HIDE ALL SCENES 
@@ -372,10 +372,10 @@ var timer = () =>{
 
         if(timeLeft == 0){
             clearInterval(countDown);
-            timeLeft = 20;
+            timeLeft = 10;
 
             //go to grad scene if pass 3rd grade
-            if(mulPoints.innerHTML >= 10) {
+            if(mulPoints.innerHTML >= 5) {
                 // console.log("mulpoint win");
                 sceneFour.style.display = "block"
                 sceneThree.style.display = "none"
