@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /////////// ADDITION SCENE////////////
 let additionAnswer;
-
+////same name function / variable!!!
 var additionProblem = () => {
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let additionProblem = document.querySelector(".addition-problem");
