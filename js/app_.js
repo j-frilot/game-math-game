@@ -360,7 +360,12 @@ var timer = () =>{
                 // console.log("mulpoint win");
                 sceneFour.style.display = "block"
                 sceneThree.style.display = "none"
-            } 
+
+                
+            } else if (mulPoints.innerHTML < 10) {
+                document.querySelector(".scene-five").style.display="flex";
+                sceneThree.style.display = "none"
+            }
 
         };
 
