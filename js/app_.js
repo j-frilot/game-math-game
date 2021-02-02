@@ -51,11 +51,13 @@ btns.forEach((btn) => {
             subtractionProblem();
             count = 0
             misses = 0
+            timeLeft = 20
             break;
         case '2':
             sceneTwo.style.display = "none";
             sceneThree.style.display = "flex";
             multiplicationProblem()
+            timeLeft = 20
             break;
         };
     });
