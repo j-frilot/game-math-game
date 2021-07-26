@@ -1,11 +1,11 @@
-let scenes = document.querySelectorAll(".scenes");
-const sceneOne = document.querySelector(".scene-one");
-const sceneTwo = document.querySelector(".scene-two");
-const sceneThree = document.querySelector(".scene-three");
-const sceneFour = document.querySelector(".scene-four");
-let count : number = 0;
-let misses : number = 0;
-let timeLeft : number = 20;
+let scenes = document.querySelectorAll<HTMLElement>(".scenes");
+const sceneOne = document.querySelector(".scene-one") as HTMLElement;
+const sceneTwo = document.querySelector(".scene-two") as HTMLElement;
+const sceneThree = document.querySelector(".scene-three") as HTMLElement;
+const sceneFour = document.querySelector(".scene-four") as HTMLElement;
+let count: number = 0;
+let misses: number = 0;
+let timeLeft: number = 20;
 
 // LOOP TO HIDE ALL SCENES
 for (let i = 0; i < scenes.length; i++) {
@@ -15,7 +15,7 @@ for (let i = 0; i < scenes.length; i++) {
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 // Main Controls
-const btns = document.querySelectorAll(".play-btn");
+const btns = document.querySelectorAll<HTMLElement>(".play-btn");
 btns.forEach((btn) => {
     btn.addEventListener("click", () => {
         additionProblem();
@@ -27,7 +27,9 @@ btns.forEach((btn) => {
 
         // switch statement to show/hide each scene
 
-        const titleContent = document.querySelector(".title-content");
+        const titleContent = document.querySelector(
+            ".title-content"
+        ) as HTMLElement;
 
         titleContent.style.display = "none";
 
@@ -101,7 +103,7 @@ var additionProblem = () => {
 };
 
 ///////// SUBTRACTION SCENE////////////
-let subtractionAnswer : number;
+let subtractionAnswer: number;
 var subtractionProblem = () => {
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let subtractionProblem = document.querySelector(".subtraction-problem");
@@ -132,13 +134,13 @@ var subtractionProblem = () => {
 };
 
 /////// MULTIPLICATION SCENE///////
-let multiplicationAnswer : number;
+let multiplicationAnswer: number;
 
 var multiplicationProblem = () => {
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let multiplicationProblem = document.querySelector(
         ".multiplication-problem"
-    );
+    ) as HTMLElement;
     let multiplyOne = Math.round(Math.random() * 13);
     let multiplyTwo = Math.round(Math.random() * 13);
     multiplicationProblem.innerHTML = `${multiplyOne} * ${multiplyTwo}`;
@@ -147,12 +149,12 @@ var multiplicationProblem = () => {
     // SELECTING RANDOM BOXES FOR RIGHT/WRONG ANSWERS
     //loop to pick 3 wrong answers and boxs
     for (let i = 0; i < 3; i++) {
-        var wrongAnswer : number = Math.round(Math.random() * 144);
+        var wrongAnswer: number = Math.round(Math.random() * 144);
         if (wrongAnswer === multiplicationAnswer) {
             wrongAnswer === Math.round(wrongAnswer / 2 + 12);
         }
 
-        let wrongAnswerBox : number = Math.ceil(Math.random() * 4);
+        let wrongAnswerBox: number = Math.ceil(Math.random() * 4);
         let wrongBoxContent = (document.getElementById(
             "mul-box" + wrongAnswerBox
         ).innerHTML = wrongAnswer);
@@ -173,7 +175,7 @@ var multiplicationProblem = () => {
 var addCheatContent = (() => {
     //array with content to fill modal if pass
 
-    const cheatBtn = document.querySelectorAll(".cheat-btn");
+    const cheatBtn = document.querySelectorAll<HTMLElement>(".cheat-btn");
     cheatBtn.forEach((cBtn) => {
         cBtn.addEventListener("click", () => {
             var modalAddCheat = document.getElementById("modal-add-cheat");
@@ -244,7 +246,7 @@ var addCheatContent = (() => {
                 </div>`
             ];
 
-            var cheater : number = Math.round(Math.random());
+            var cheater: number = Math.round(Math.random());
 
             if (cheater) {
                 switch (cBtn.dataset.cheat) {
@@ -315,10 +317,10 @@ var tallyPoints = () => {
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
-let startTimerButton = document.querySelectorAll(".start-timer");
+let startTimerButton = document.querySelectorAll<HTMLElement>(".start-timer");
 startTimerButton.forEach((timerButton) => {
     timerButton.addEventListener("click", () => {
-        let equation = document.querySelectorAll(".equation");
+        let equation = document.querySelectorAll<HTMLElement>(".equation");
         for (let i = 0; i < 3; i++) {
             equation[i].style.display = "block";
         }
@@ -330,7 +332,7 @@ startTimerButton.forEach((timerButton) => {
     });
 });
 
-let countDown : number;
+let countDown: number;
 
 var timer = () => {
     let countDown = setInterval(() => {
@@ -346,13 +348,16 @@ var timer = () => {
                 sceneFour.style.display = "block";
                 sceneThree.style.display = "none";
             } else if (parseInt(mulPoints.innerHTML) < 10) {
-                document.querySelector(".scene-five").style.display = "flex";
+                let sceneFive = document.querySelector(
+                    ".scene-five"
+                ) as HTMLElement;
+                sceneFive.style.display = "flex";
                 sceneThree.style.display = "none";
             }
         }
 
-        let timer = (document.querySelectorAll(".timer");
-       
+        let timer = document.querySelectorAll<HTMLElement>(".timer");
+
         for (let i = 0; i < 3; i++) {
             timer[i].innerHTML = timeLeft;
         }

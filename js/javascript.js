@@ -244,11 +244,12 @@ var timer = function () {
                 sceneThree.style.display = "none";
             }
             else if (parseInt(mulPoints.innerHTML) < 10) {
-                document.querySelector(".scene-five").style.display = "flex";
+                var sceneFive = document.querySelector(".scene-five");
+                sceneFive.style.display = "flex";
                 sceneThree.style.display = "none";
             }
         }
-        var timer = (document.querySelectorAll(".timer"));
+        var timer = document.querySelectorAll(".timer");
         for (var i = 0; i < 3; i++) {
             timer[i].innerHTML = timeLeft;
         }
