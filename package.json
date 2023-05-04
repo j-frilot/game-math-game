@@ -1,0 +1,17 @@
+{
+	"name": "learning-game",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.html",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/j-frilot/math-game.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/j-frilot/math-game/issues"
+	},
+	"homepage": "https://github.com/j-frilot/math-game#readme"
+}
