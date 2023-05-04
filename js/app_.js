@@ -1,14 +1,19 @@
-let writeUps = document.querySelectorAll(".write-ups");
-writeUps = 0;
 let scenes = document.querySelectorAll(".scenes");
+const sceneOne = document.querySelector(".scene-one");
+const sceneTwo = document.querySelector(".scene-two");
+const sceneThree = document.querySelector(".scene-three");
+const sceneFour = document.querySelector(".scene-four");
 let count = 0;
-let timeLeft = 10;
-//LOOP TO HIDE ALL SCENES 
+let misses = 0;
+let timeLeft = 20;
+
+
+// LOOP TO HIDE ALL SCENES 
 for (i = 0; i < scenes.length; i++){
     scenes[i].style.display = "none";
-    let writeUp = writeUps[i]
-
 }
+
+
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -22,17 +27,13 @@ btns.forEach((btn) => {
         
 
         for (i = 0; i < 3; i++) {
-            startTimerButton[i].innerHTML = `Start!`
-            let splash = document.querySelectorAll(".splash")
-            splash[i].style.display = "none";
+            startTimerButton[i].innerHTML = `Start!`;
         }
 
         // switch statement to show/hide each scene
-
+        
         const titleContent = document.querySelector(".title-content");
-        const sceneOne = document.querySelector(".scene-one");
-        const sceneTwo = document.querySelector(".scene-two");
-        const sceneThree = document.querySelector(".scene-three");
+        
 
         titleContent.style.display = "none";
 
@@ -40,17 +41,23 @@ btns.forEach((btn) => {
         case '0': 
             sceneOne.style.display = "flex";
             additionProblem();
+            count = 0
+            misses = 0
             break;
 
         case '1'://2nd
             sceneOne.style.display = "none";
             sceneTwo.style.display = "flex";
             subtractionProblem();
+            count = 0
+            misses = 0
+            timeLeft = 20
             break;
         case '2':
             sceneTwo.style.display = "none";
             sceneThree.style.display = "flex";
             multiplicationProblem()
+            timeLeft = 20
             break;
         };
     });
@@ -70,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /////////// ADDITION SCENE////////////
 let additionAnswer;
-
+////same name function / variable!!!
 var additionProblem = () => {
     // PICKEING RANDOM NUMBERS FOR EQUATION
     let additionProblem = document.querySelector(".addition-problem");
@@ -164,6 +171,8 @@ var multiplicationProblem = () => {
 // CHEATING INFO RANDOM and cheat pass/fail
 
 
+
+
 //adding content to (if cheated) modal based on passed/failed
 var addCheatContent = (() => {
     //array with content to fill modal if pass
@@ -240,6 +249,7 @@ var addCheatContent = (() => {
             ];
 
             var cheater = Math.round(Math.random());
+            
 
             if (cheater) {
                 switch (cBtn.dataset.cheat) {
@@ -270,21 +280,24 @@ var addCheatContent = (() => {
                     break;
                 }
             }
-               
         });
-    
     });
 })()
+
+
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 // TALLY POINTS WHEN GET CORRECT ANSWER
-
+let addPoints = document.getElementById("add-points");
+let subPoints = document.getElementById("sub-points");
+let mulPoints = document.getElementById("mul-points");
+let addMistakes = document.getElementById("add-mistakes");
+let subMistakes = document.getElementById("sub-mistakes");
+let mulMistakes = document.getElementById("mul-mistakes");
 var tallyPoints = () =>{
     let answers = document.querySelectorAll(".answer");
-    let addPoints = document.getElementById("add-points");
-    let subPoints = document.getElementById("sub-points");
-    let mulPoints = document.getElementById("mul-points");
+
 
     answers.forEach((answer) => {
         answer.addEventListener("click", () => {
@@ -303,12 +316,13 @@ var tallyPoints = () =>{
                 console.log("3rd grade points", count)
                 mulPoints.innerHTML = count;
                 multiplicationProblem();
-                
-            };
+
+            }
+            
+            
         });
     });
 };
-
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
@@ -316,38 +330,51 @@ let startTimerButton = document.querySelectorAll(".start-timer");
 startTimerButton.forEach((timerButton) => {
     timerButton.addEventListener("click",() => {
 
-        
         let equation = document.querySelectorAll(".equation")
         for (i = 0; i < 3; i++) {
             equation[i].style.display = "block"
         }
 
- 
         timerButton.innerHTML = timeLeft;
         timer();
+        
+        timerButton.style.display = "none"
+
     });
 });
 
 
 let countDown;
 
+
 var timer = () =>{
     let countDown = setInterval(() => {
-        timeLeft = timeLeft - 1;
-
+        timeLeft--
 
         if(timeLeft == 0){
-            count >= 1? console.log("yes") : console.log("no");
-            
             clearInterval(countDown);
-            timeLeft = 10;
-        };
-        
+            timeLeft = 20;
 
-        for (i = 0; i < 3; i++) {
-            startTimerButton[i].innerHTML = timeLeft
+            //go to grad scene if pass 3rd grade
+            if(mulPoints.innerHTML >= 10) {
+                // console.log("mulpoint win");
+                sceneFour.style.display = "block"
+                sceneThree.style.display = "none"
+
+                
+            } else if (mulPoints.innerHTML < 10) {
+                document.querySelector(".scene-five").style.display="flex";
+                sceneThree.style.display = "none"
+            }
+
+        };
+
+        let timer = document.querySelectorAll(".timer")
+        for (i = 0; i < 3; i ++){
+            timer[i].innerHTML = timeLeft
         }
-        
+
+
     }, 1000);
     
 };
