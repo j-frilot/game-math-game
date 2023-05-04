@@ -1,5 +1,6 @@
 const playButton = document.getElementById('play-button');
 const titleSection = document.getElementById('titleSection');
+const gameOneSection = document.getElementById('gameOneSection');
 const elementA = document.getElementById('element-a');
 const elementB = document.getElementById('element-b');
 let answerChoices = document.getElementById('answerChoices');
@@ -7,7 +8,8 @@ let score = 0;
 
 //// BEGIN GAME
 playButton.addEventListener('click', () => {
-	// titleSection.classList.add('hidden');
+	titleSection.classList.add('d-none');
+	gameOneSection.classList.remove('d-none');
 	const randomNumA = Math.floor(Math.random() * 12);
 	const randomNumB = Math.floor(Math.random() * 12);
 	hideStartScreen();
