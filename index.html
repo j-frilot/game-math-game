@@ -13,27 +13,31 @@
 		<title>Learning Game</title>
 	</head>
 	<body>
-		<!-- TITLE -->
-		<section
-			id="titleSection"
-			class="flex flex-col items-center text-center"
-		>
-			<h1 class="mx-auto">Math Learning Game</h1>
-			<h2>Try to score as many points as you can!</h2>
-			<button id="play-button" class="btn btn-primary border-2 p-1">
-				Begin
-			</button>
-		</section>
-		<!-- GAME 1 -->
-		<section id="gameOneSection" class="d-none flex text-center">
-			<h1>Addition</h1>
-			<div id="equation">
-				<span id="element-a"></span> +
-				<span id="element-b"></span>
-			</div>
-			<div id="answerChoices" class="flex"></div>
-		</section>
-		<!-- GAME 2 -->
+		<div class="container text-center">
+			<!-- TITLE -->
+			<section id="titleSection">
+				<h1>Math Learning Game</h1>
+				<h2>Try to score as many points as you can!</h2>
+				<button id="play-button" class="btn btn-primary">Begin</button>
+			</section>
+			<!-- GAME -->
+			<section id="gameSection" class="d-none">
+				<h1>Addition</h1>
+				<div id="equation">
+					<span id="element-a"></span> +
+					<span id="element-b"></span>
+				</div>
+				<div id="answerChoices" class="flex"></div>
+			</section>
+			<section id="scoreSection" class="d-none">
+				<p>Current Score: <span id="currentScore"></span></p>
+				<p>Time Left: <span id="timer"></span></p>
+			</section>
+			<section id="endSection" class="d-none">
+				<h1>Math Learning Game</h1>
+				<h2>You scored <span id="finalPoints"></span> points!</h2>
+			</section>
+		</div>
 	</body>
 	<script src="js/app.js"></script>
 </html>
