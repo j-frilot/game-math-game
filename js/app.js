@@ -5,7 +5,7 @@ const scoreSection = document.getElementById('scoreSection');
 const endSection = document.getElementById('endSection');
 let answerChoices = document.getElementById('answerChoices');
 let score = 0;
-let time = 3;
+let time = 20;
 
 //// BEGIN GAME BUTTON EVENT LISTENER
 playButton.addEventListener('click', () => {
@@ -116,5 +116,5 @@ document.getElementById('playAgainButton').addEventListener('click', () => {
 	endSection.classList.add('d-none');
 	score = 0;
 	changeScore(score);
-	time = 3;
+	time = 20;
 });
