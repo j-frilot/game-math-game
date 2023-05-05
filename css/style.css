@@ -1,5 +1,13 @@
-body {
+.screen {
 	background-image: url('../images/math-bg-1.jpg');
-	background-size: cover;
-	height: 100vh;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 400px;
+	height: 800px;
+}
+
+.game-container {
+	margin: auto;
+	/* margin-top: 100; */
 }

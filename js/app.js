@@ -5,7 +5,7 @@ const scoreSection = document.getElementById('scoreSection');
 const endSection = document.getElementById('endSection');
 let answerChoices = document.getElementById('answerChoices');
 let score = 0;
-let time = 20;
+let time = 3;
 
 //// BEGIN GAME BUTTON EVENT LISTENER
 playButton.addEventListener('click', () => {
@@ -109,3 +109,12 @@ function finishGame() {
 
 	document.getElementById('finalPoints').innerHTML = score;
 }
+
+//// PLAY AGAIN
+document.getElementById('playAgainButton').addEventListener('click', () => {
+	titleSection.classList.remove('d-none');
+	endSection.classList.add('d-none');
+	score = 0;
+	changeScore(score);
+	time = 3;
+});

@@ -12,13 +12,15 @@
 		/>
 		<title>Learning Game</title>
 	</head>
-	<body>
-		<div class="container text-center">
+	<body class="bg-success text-white">
+		<div
+			class="screen m-auto text-center d-flex flex-column justify-content-center rounded-3"
+		>
 			<!-- TITLE -->
-			<section id="titleSection">
-				<h1>Math Learning Game</h1>
+			<section id="titleSection" class="mb-5">
+				<h1 class="fw-bolder">Math Learning Game</h1>
 				<h2>Try to score as many points as you can!</h2>
-				<button id="play-button" class="btn btn-primary">Begin</button>
+				<button id="play-button" class="btn btn-danger">Begin</button>
 			</section>
 			<!-- GAME -->
 			<section id="gameSection" class="d-none">
@@ -33,9 +35,11 @@
 				<p>Current Score: <span id="currentScore"></span></p>
 				<p>Time Left: <span id="timer"></span></p>
 			</section>
-			<section id="endSection" class="d-none">
-				<h1>Math Learning Game</h1>
-				<h2>You scored <span id="finalPoints"></span> points!</h2>
+			<section id="endSection" class="mb-5 d-none">
+				<h3>You scored <span id="finalPoints"></span> points!</h3>
+				<button id="playAgainButton" class="btn btn-danger">
+					Play Again
+				</button>
 			</section>
 		</div>
 	</body>
