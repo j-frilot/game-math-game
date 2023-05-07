@@ -1,13 +1,9 @@
+//// BEGIN GAME BUTTON EVENT LISTENER
 const playButton = document.getElementById('play-button');
 const titleSection = document.getElementById('titleSection');
 const gameSection = document.getElementById('gameSection');
 const scoreSection = document.getElementById('scoreSection');
-const endSection = document.getElementById('endSection');
-let answerChoices = document.getElementById('answerChoices');
-let score = 0;
 let time = 20;
-
-//// BEGIN GAME BUTTON EVENT LISTENER
 playButton.addEventListener('click', () => {
 	titleSection.classList.add('d-none');
 	gameSection.classList.remove('d-none');
@@ -28,6 +24,7 @@ function generatePrablem() {
 }
 
 //// GENERATE RANDOM ANSWER CHOICES
+let answerChoices = document.getElementById('answerChoices');
 function generateAnswerChoices(correctAnswer) {
 	//come up with random choices & check that choices are not same as correct answer
 	let answerChoiceArray = [];
@@ -59,6 +56,7 @@ function generateAnswerChoices(correctAnswer) {
 }
 
 //// SELECT ANSWER
+let score = 0;
 function selectAnswer(correctAnswer) {
 	const answerChoiceBtns = document.querySelectorAll('#answerChoiceBtns');
 	answerChoiceBtns.forEach((btn) => {
@@ -106,6 +104,7 @@ function startCountdown() {
 }
 
 //// FINISH GAME
+const endSection = document.getElementById('endSection');
 function finishGame() {
 	gameSection.classList.add('d-none');
 	scoreSection.classList.add('d-none');
