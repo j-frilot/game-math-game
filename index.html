@@ -18,25 +18,30 @@
 		>
 			<!-- TITLE -->
 			<section id="titleSection" class="mb-5">
-				<h1 class="fw-bolder">Math Learning Game</h1>
-				<h2>Try to score as many points as you can!</h2>
+				<h1 class="fw-bolder">Math Game</h1>
+				<h2 class="fs-3">Try to score as many points as you can!</h2>
 				<button id="play-button" class="btn btn-danger">Begin</button>
 			</section>
 			<!-- GAME -->
+
 			<section id="gameSection" class="d-none">
 				<h1>Addition</h1>
-				<div id="equation">
+				<div id="equation" class="fs-1">
 					<span id="element-a"></span> +
 					<span id="element-b"></span>
 				</div>
 				<div id="answerChoices" class="flex"></div>
 			</section>
-			<section id="scoreSection" class="d-none">
+			<section id="scoreSection" class="d-none fs-3 mt-5">
 				<p>Current Score: <span id="currentScore"></span></p>
 				<p>Time Left: <span id="timer"></span></p>
 			</section>
+
+			<!-- ENDING -->
 			<section id="endSection" class="mb-5 d-none">
-				<h3>You scored <span id="finalPoints"></span> points!</h3>
+				<h3 class="mb-5">
+					You scored <span id="finalPoints"></span> points!
+				</h3>
 				<button id="playAgainButton" class="btn btn-danger">
 					Play Again
 				</button>

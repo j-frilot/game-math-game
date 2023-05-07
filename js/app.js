@@ -18,8 +18,8 @@ playButton.addEventListener('click', () => {
 
 //// GENERATE AN RANDOM EQUATION
 function generatePrablem() {
-	const randomNumA = Math.floor(Math.random() * 12);
-	const randomNumB = Math.floor(Math.random() * 12);
+	const randomNumA = Math.floor(Math.random() * 15);
+	const randomNumB = Math.floor(Math.random() * 15);
 	document.getElementById('element-a').innerHTML = randomNumA;
 	document.getElementById('element-b').innerHTML = randomNumB;
 	const correctAnswer = randomNumA + randomNumB;
@@ -32,7 +32,7 @@ function generateAnswerChoices(correctAnswer) {
 	//come up with random choices & check that choices are not same as correct answer
 	let answerChoiceArray = [];
 	for (let i = 0; i < 3; i++) {
-		answerChoiceArray.push(Math.floor(Math.random() * 24));
+		answerChoiceArray.push(Math.floor(Math.random() * 30));
 
 		for (let j = 0; j <= answerChoiceArray.length; j++) {
 			if (answerChoiceArray[i] === correctAnswer) {
@@ -50,7 +50,7 @@ function generateAnswerChoices(correctAnswer) {
 	const addChoices = answerChoiceArray
 		.map((answers) => {
 			return `
-            <button id="answerChoiceBtns" class="btn btn-primary">${answers}</button>`;
+            <button id="answerChoiceBtns" class="btn btn-primary mx-2">${answers}</button>`;
 		})
 		.join('');
 	answerChoices.innerHTML = addChoices;
@@ -81,6 +81,10 @@ function selectAnswer(correctAnswer) {
 function changeScore() {
 	const currentScore = document.getElementById('currentScore');
 	currentScore.innerHTML = score;
+
+	score < 0
+		? currentScore.classList.add('text-danger')
+		: currentScore.classList.add('text-white');
 }
 
 //// TIMER CONTROLS
