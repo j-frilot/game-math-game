@@ -82,9 +82,9 @@ function changeScore() {
 	const currentScore = document.getElementById('currentScore');
 	currentScore.innerHTML = score;
 
-	score < 0
-		? currentScore.classList.add('text-danger')
-		: currentScore.classList.add('text-white');
+	if (score < 0) {
+		currentScore.classList.add('text-danger');
+	}
 }
 
 //// TIMER CONTROLS
